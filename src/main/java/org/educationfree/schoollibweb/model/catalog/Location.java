@@ -8,7 +8,7 @@ import javax.persistence.*;
 @Table(name = "locations")
 @Getter
 @Setter
-public class Location extends BaseCatalog{
+public class Location extends AbstractCatalog {
     @ManyToOne
     @JoinColumn(name = "location_type_id")
     private LocationType locationType;

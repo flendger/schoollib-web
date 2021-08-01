@@ -10,5 +10,5 @@ import javax.persistence.Table;
 @Table(name = "subjects")
 @Getter
 @Setter
-public class Subject extends BaseCatalog{
+public class Subject extends AbstractCatalog {
 }

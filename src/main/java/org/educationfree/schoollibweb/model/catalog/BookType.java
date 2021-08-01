@@ -10,5 +10,5 @@ import javax.persistence.Table;
 @Table(name = "book_types")
 @Getter
 @Setter
-public class BookType extends BaseCatalog {
+public class BookType extends AbstractCatalog {
 }

@@ -10,7 +10,7 @@ import javax.persistence.MappedSuperclass;
 @MappedSuperclass
 @Getter
 @Setter
-public abstract class BaseCatalog extends BaseEntity {
+public abstract class AbstractCatalog extends BaseEntity {
     @Column(name = "code")
     protected Integer code;
 
