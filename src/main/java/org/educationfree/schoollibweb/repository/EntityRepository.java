@@ -7,6 +7,6 @@ import org.springframework.data.repository.NoRepositoryBean;
 import java.util.List;
 
 @NoRepositoryBean
-public interface BaseEntityRepository<T extends BaseEntity> extends JpaRepository<T, Long> {
+public interface EntityRepository<T extends BaseEntity> extends JpaRepository<T, Long> {
     List<T> findAllByIsDeletedFalse();
 }

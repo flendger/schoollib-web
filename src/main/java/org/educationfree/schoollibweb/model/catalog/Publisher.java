@@ -10,5 +10,5 @@ import javax.persistence.Table;
 @Table(name = "publishers")
 @Getter
 @Setter
-public class Publisher extends BaseCatalog{
+public class Publisher extends AbstractCatalog {
 }

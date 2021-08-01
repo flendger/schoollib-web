@@ -11,7 +11,7 @@ import javax.persistence.Table;
 @Table(name = "people")
 @Getter
 @Setter
-public class Person extends BaseCatalog{
+public class Person extends AbstractCatalog {
     @Column(name = "telephone")
     private String telephone;
 

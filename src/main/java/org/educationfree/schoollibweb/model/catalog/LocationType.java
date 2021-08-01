@@ -10,5 +10,5 @@ import javax.persistence.Table;
 @Table(name = "location_types")
 @Getter
 @Setter
-public class LocationType extends BaseCatalog{
+public class LocationType extends AbstractCatalog {
 }

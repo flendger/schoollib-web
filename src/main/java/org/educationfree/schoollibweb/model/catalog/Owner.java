@@ -10,5 +10,5 @@ import javax.persistence.Table;
 @Table(name = "owners")
 @Getter
 @Setter
-public class Owner extends BaseCatalog{
+public class Owner extends AbstractCatalog {
 }
