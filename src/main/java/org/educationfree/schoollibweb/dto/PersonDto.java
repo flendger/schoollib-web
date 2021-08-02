@@ -1,15 +1,12 @@
 package org.educationfree.schoollibweb.dto;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
-import org.educationfree.schoollibweb.model.catalog.AbstractCatalog;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
 
 @Getter
 @Setter
+@AllArgsConstructor
 public class PersonDto extends AbstractCatalogDto {
     private String telephone;
 
@@ -18,4 +15,8 @@ public class PersonDto extends AbstractCatalogDto {
     private String address;
 
     private String comment;
+
+    public PersonDto(Long id, boolean isDeleted, Integer code, String name) {
+        super(id, isDeleted, code, name);
+    }
 }

@@ -1,5 +1,7 @@
 package org.educationfree.schoollibweb.config;
 
+import org.modelmapper.ModelMapper;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
@@ -12,5 +14,9 @@ public class AppConfig implements WebMvcConfigurer {
             registry.addResourceHandler("/static/dist/**").addResourceLocations("classpath:/static/dist/");
             registry.addResourceHandler("/static/vendors/**").addResourceLocations("classpath:/static/vendors/");
         }
+    }
+    @Bean
+    public ModelMapper getMapper() {
+        return new ModelMapper();
     }
 }

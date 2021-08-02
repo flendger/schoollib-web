@@ -1,9 +1,11 @@
 package org.educationfree.schoollibweb.dto;
 
-import org.educationfree.schoollibweb.model.catalog.AbstractCatalog;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
-public class BookDto extends AbstractCatalog {
-
+@Data
+@NoArgsConstructor
+public class BookDto extends AbstractCatalogDto {
     private BookTypeDto bookTypeDto;
 
     private SubjectDto subjectDto;
@@ -24,7 +26,17 @@ public class BookDto extends AbstractCatalog {
 
     private double price;
 
-    public void setPrice(double price) {
-        this.price = (double) Math.round(price * 100) / 100;
+    public BookDto(Long id, boolean isDeleted, Integer code, String name, BookTypeDto bookTypeDto, SubjectDto subjectDto, PublisherDto publisherDto, OwnerDto ownerDto, String author, int classFrom, int classTo, int year, boolean ownership, double price) {
+        super(id, isDeleted, code, name);
+        this.bookTypeDto = bookTypeDto;
+        this.subjectDto = subjectDto;
+        this.publisherDto = publisherDto;
+        this.ownerDto = ownerDto;
+        this.author = author;
+        this.classFrom = classFrom;
+        this.classTo = classTo;
+        this.year = year;
+        this.ownership = ownership;
+        this.price = price;
     }
 }
