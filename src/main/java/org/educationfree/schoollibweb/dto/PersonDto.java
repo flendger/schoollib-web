@@ -1,12 +1,12 @@
 package org.educationfree.schoollibweb.dto;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Getter
 @Setter
-@AllArgsConstructor
+@NoArgsConstructor
 public class PersonDto extends AbstractCatalogDto {
     private String telephone;
 
@@ -16,7 +16,11 @@ public class PersonDto extends AbstractCatalogDto {
 
     private String comment;
 
-    public PersonDto(Long id, boolean isDeleted, Integer code, String name) {
+    public PersonDto(Long id, boolean isDeleted, Integer code, String name, String telephone, String email, String address, String comment) {
         super(id, isDeleted, code, name);
+        this.telephone = telephone;
+        this.email = email;
+        this.address = address;
+        this.comment = comment;
     }
 }

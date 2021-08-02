@@ -1,11 +1,14 @@
 package org.educationfree.schoollibweb.dto;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Getter
 @Setter
-@AllArgsConstructor
+@NoArgsConstructor
 public class LocationTypeDto extends AbstractCatalogDto {
+    public LocationTypeDto(Long id, boolean isDeleted, Integer code, String name) {
+        super(id, isDeleted, code, name);
+    }
 }

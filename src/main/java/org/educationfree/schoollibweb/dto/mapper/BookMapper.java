@@ -14,7 +14,7 @@ public class BookMapper implements Mapper<Book, BookDto> {
     }
 
     @Override
-    public BookDto EntityToDto(Book book) {
+    public BookDto entityToDto(Book book) {
         BookDto bookDto = modelMapper.map(book, BookDto.class);
         bookDto.setBookTypeDto(modelMapper.map(book.getBookType(), BookTypeDto.class));
         bookDto.setOwnerDto(modelMapper.map(book.getOwner(), OwnerDto.class));
@@ -24,7 +24,7 @@ public class BookMapper implements Mapper<Book, BookDto> {
     }
 
     @Override
-    public Book DtoToEntity(BookDto bookDto) {
+    public Book dtoToEntity(BookDto bookDto) {
         Book book =  modelMapper.map(bookDto,Book.class);
         book.setBookType(modelMapper.map(bookDto.getBookTypeDto(), BookType.class));
         book.setOwner(modelMapper.map(bookDto.getOwnerDto(), Owner.class));
