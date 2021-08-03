@@ -64,24 +64,25 @@
                                         <table id="datable_1" class="table table-hover display  pb-30" >
                                             <thead>
                                             <tr>
+                                                <th>ID</th>
                                                 <th>Name</th>
-                                                <th>Position</th>
-                                                <th>Office</th>
-                                                <th>Age</th>
-                                                <th>Start date</th>
-                                                <th>Salary</th>
+                                                <th>Email</th>
+                                                <th>Телефон</th>
+                                                <th>Адрес</th>
+                                                <th>Комментарий</th>
+                                                <th>Операции</th>
                                             </tr>
                                             </thead>
-                                            <tbody>
-                                            <tr>
-                                                <td>Tiger Nixon</td>
-                                                <td>System Architect</td>
-                                                <td>Edinburgh</td>
-                                                <td>61</td>
-                                                <td>2011/04/25</td>
-                                                <td>$320,800</td>
+                                            <!--/*@thymesVar id="person" type="org.educationfree.schoollibweb.model.catalog.Person"*/-->
+                                            <tr th:each="person : ${persons}">
+                                                <th th:text="${person.id}"></th>
+                                                <th th:text="${person.name}"></th>
+                                                <th th:text="${person.email}"></th>
+                                                <th th:text="${person.telephone}"></th>
+                                                <th th:text="${person.address}"></th>
+                                                <th th:text="${person.comment}"></th>
+                                                <th> <a th:href="@{'/person-edit/' + ${person.id}}" class="jsgrid-button jsgrid-edit-button">Изменить</a><br></th>
                                             </tr>
-                                            </tbody>
                                         </table>
                                     </div>
                                 </div>
