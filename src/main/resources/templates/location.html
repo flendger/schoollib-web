@@ -68,8 +68,8 @@
                                             <tr th:each="location : ${locations}">
                                                 <th><a th:href="@{'/location/' + ${location.id}}" th:text="${location.code}"></a></th>
                                                 <th><a th:href="@{'/location/' + ${location.id}}" th:text="${location.name}"></a></th>
-                                                <th><a th:href="@{'/location/' + ${location.id}}" th:text="${location.locationType}"></a></th>
-                                                <th><a th:href="@{'/location/' + ${location.id}}" th:text="${location.person}"></a></th>
+                                                <th><a th:href="@{'/location/' + ${location.id}}" th:text="${location.locationType == null ? '-' : location.locationType.name}"></a></th>
+                                                <th><a th:href="@{'/location/' + ${location.id}}" th:text="${location.person == null ? '-' : location.person.name}"></a></th>
                                             </tr>
                                         </table>
                                     </div>
