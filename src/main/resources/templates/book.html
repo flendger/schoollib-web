@@ -34,13 +34,13 @@
             <!-- Title -->
             <div class="row heading-bg">
                 <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-                    <h5 class="txt-dark">Ответственные</h5>
+                    <h5 class="txt-dark">Книги</h5>
                 </div>
                 <!-- Breadcrumb -->
                 <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
                     <ol class="breadcrumb">
                         <li><a href="/"><span>Главная</span></a></li>
-                        <li class="active"><span>Ответственные</span></li>
+                        <li class="active"><span>Книги</span></li>
                     </ol>
                 </div>
                 <!-- /Breadcrumb -->
@@ -59,21 +59,31 @@
                                             <thead>
                                             <tr>
                                                 <th>Код</th>
-                                                <th>ФИО</th>
-                                                <th>Email</th>
-                                                <th>Телефон</th>
-                                                <th>Адрес</th>
-                                                <th>Комментарий</th>
+                                                <th>Наименование</th>
+                                                <th>Тип книги</th>
+                                                <th>Автор</th>
+                                                <th>Класс</th>
+                                                <th>Класс</th>
+                                                <th>Год</th>
+                                                <th>Издательство</th>
+                                                <th>Ответственный</th>
+                                                <th>Статус</th>
+                                                <th>Цена</th>
                                             </tr>
                                             </thead>
-                                            <!--/*@thymesVar id="person" type="org.educationfree.schoollibweb.model.catalog.Person"*/-->
-                                            <tr th:each="person : ${persons}">
-                                                <th><a th:href="@{'/person/' + ${person.id}}" th:text="${person.code}"></a></th>
-                                                <th><a th:href="@{'/person/' + ${person.id}}" th:text="${person.name}"></a></th>
-                                                <th><a th:href="@{'/person/' + ${person.id}}" th:text="${person.email}"></a></th>
-                                                <th><a th:href="@{'/person/' + ${person.id}}" th:text="${person.telephone}"></a></th>
-                                                <th><a th:href="@{'/person/' + ${person.id}}" th:text="${person.address}"></a></th>
-                                                <th><a th:href="@{'/person/' + ${person.id}}" th:text="${person.comment}"></a></th>
+                                            <!--/*@thymesVar id="person" type="org.educationfree.schoollibweb.model.catalog.Subject"*/-->
+                                            <tr th:each="book : ${books}">
+                                                <th><a th:href="@{'/book/' + ${book.id}}" th:text="${book.code}"></a></th>
+                                                <th><a th:href="@{'/book/' + ${book.id}}" th:text="${book.name}"></a></th>
+                                                <th><a th:href="@{'/book/' + ${book.id}}" th:text="${book.bookType.name}"></a></th>
+                                                <th><a th:href="@{'/book/' + ${book.id}}" th:text="${book.author}"></a></th>
+                                                <th><a th:href="@{'/book/' + ${book.id}}" th:text="${book.classFrom}"></a></th>
+                                                <th><a th:href="@{'/book/' + ${book.id}}" th:text="${book.classTo}"></a></th>
+                                                <th><a th:href="@{'/book/' + ${book.id}}" th:text="${book.year}"></a></th>
+                                                <th><a th:href="@{'/book/' + ${book.id}}" th:text="${book.publisher.name}"></a></th>
+                                                <th><a th:href="@{'/book/' + ${book.id}}" th:text="${book.owner.name}"></a></th>
+                                                <th><a th:href="@{'/book/' + ${book.id}}" th:text="${book.ownership == true ? 'Взята' : 'Вовзращена'}"></a></th>
+                                                <th><a th:href="@{'/book/' + ${book.id}}" th:text="${book.price}"></a></th>
                                             </tr>
                                         </table>
                                     </div>
