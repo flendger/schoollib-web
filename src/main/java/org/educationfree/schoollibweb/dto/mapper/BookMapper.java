@@ -1,17 +1,15 @@
 package org.educationfree.schoollibweb.dto.mapper;
 
+import lombok.RequiredArgsConstructor;
 import org.educationfree.schoollibweb.dto.*;
 import org.educationfree.schoollibweb.model.catalog.*;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Component;
 
 @Component
+@RequiredArgsConstructor
 public class BookMapper implements Mapper<Book, BookDto> {
-    final   ModelMapper modelMapper;
-
-    public BookMapper(ModelMapper modelMapper) {
-        this.modelMapper = modelMapper;
-    }
+    private final ModelMapper modelMapper;
 
     @Override
     public BookDto entityToDto(Book book) {
@@ -25,7 +23,7 @@ public class BookMapper implements Mapper<Book, BookDto> {
 
     @Override
     public Book dtoToEntity(BookDto bookDto) {
-        Book book =  modelMapper.map(bookDto,Book.class);
+        Book book = modelMapper.map(bookDto, Book.class);
         book.setBookType(modelMapper.map(bookDto.getBookTypeDto(), BookType.class));
         book.setOwner(modelMapper.map(bookDto.getOwnerDto(), Owner.class));
         book.setPublisher(modelMapper.map(bookDto.getPublisherDto(), Publisher.class));
