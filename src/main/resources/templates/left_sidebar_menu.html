@@ -1,0 +1,67 @@
+<html xmlns:th="http://www.thymeleaf.org">
+
+<div class="fixed-sidebar-left" th:fragment="left_sidebar(activeTab)">
+    <ul class="nav navbar-nav side-nav nicescroll-bar">
+        <li class="navigation-header">
+            <span>Билиотека</span>
+            <i class="zmdi zmdi-more"></i>
+        </li>
+        <li>
+            <a href="javascript:void(0);" data-toggle="collapse" data-target="#dropdown_dr_lv1">
+                <div class="pull-left"><i class="zmdi zmdi-book mr-20"></i><span class="right-nav-text">Справочники</span></div>
+                <div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div>
+                <div class="clearfix"></div>
+            </a>
+            <ul id="dropdown_dr_lv1" class="collapse collapse-level-1">
+                <li>
+                    <a href="#">Книги</a>
+                </li>
+                <li>
+                    <a href="#">Типы книг</a>
+                </li>
+                <li>
+                    <a href="#">Владельцы</a>
+                </li>
+                <li>
+                    <a href="#">Издательство</a>
+                </li>
+                <li>
+                    <a href="#">Предметы</a>
+                </li>
+                <li>
+                    <a href="#">Места хранения</a>
+                </li>
+                <li>
+                    <a href="/person-list">Ответстевнные</a>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <a href="javascript:void(0);" data-toggle="collapse" data-target="#dropdown_dr_lv2">
+                <div class="pull-left"><i class="zmdi zmdi-edit mr-20"></i><span class="right-nav-text">Операции</span></div>
+                <div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div>
+                <div class="clearfix"></div>
+            </a>
+            <ul id="dropdown_dr_lv2" class="collapse collapse-level-1">
+                <li>
+                    <a href="#">Инвентаризация</a>
+                </li>
+                <li>
+                    <a href="#">Поступления от издательства</a>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <a href="javascript:void(0);" data-toggle="collapse" data-target="#dropdown_dr_lv3">
+                <div class="pull-left"><i class="fa fa-file mr-20"></i><span class="right-nav-text">Отчеты</span></div>
+                <div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div>
+                <div class="clearfix"></div>
+            </a>
+            <ul id="dropdown_dr_lv3" class="collapse collapse-level-1">
+                <li>
+                    <a href="#">Остатки книг</a>
+                </li>
+            </ul>
+        </li>
+    </ul>
+</div>
