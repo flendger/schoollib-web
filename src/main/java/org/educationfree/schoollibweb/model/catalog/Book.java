@@ -44,7 +44,20 @@ public class Book extends AbstractCatalog {
     @Column(name = "price")
     private double price;
 
-    public Book(Long id, boolean isDeleted, Integer code, String name, BookType bookType, Subject subject, Publisher publisher, Owner owner, String author, int classFrom, int classTo, int year, boolean ownership, double price) {
+    public Book(Long id,
+                boolean isDeleted,
+                Integer code,
+                String name,
+                BookType bookType,
+                Subject subject,
+                Publisher publisher,
+                Owner owner,
+                String author,
+                int classFrom,
+                int classTo,
+                int year,
+                boolean ownership,
+                double price) {
         super(id, isDeleted, code, name);
         this.bookType = bookType;
         this.subject = subject;

@@ -18,6 +18,7 @@ public class AppConfig implements WebMvcConfigurer {
             registry.addResourceHandler("/static/vendors/**").addResourceLocations("classpath:/static/vendors/");
         }
     }
+
     @Bean
     public ModelMapper getMapper() {
         ModelMapper modelMapper = new ModelMapper();

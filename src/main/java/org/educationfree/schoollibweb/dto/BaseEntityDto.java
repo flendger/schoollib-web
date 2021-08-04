@@ -2,7 +2,8 @@ package org.educationfree.schoollibweb.dto;
 
 import lombok.*;
 
-@Data
+@Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 public abstract class BaseEntityDto {
