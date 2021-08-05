@@ -61,24 +61,29 @@
                             <div class="panel-body">
                                 <div class="table-wrap">
                                     <div class="table-responsive">
-                                        <table id="datable_1" class="table table-hover display  pb-30" >
+                                        <table id="datable_1" class="table table-hover display  pb-30">
                                             <thead>
                                             <tr>
                                                 <th>ID</th>
                                                 <th>Код</th>
-                                                <th>Название</th>
+                                                <th>Наименование</th>
                                                 <th>Актуальность</th>
 
                                             </tr>
                                             </thead>
-                                            <!--/*@thymesVar id="person" type="org.educationfree.schoollibweb.model.catalog.Person"*/-->
+
                                             <tr th:each="booktype : ${booktypes}">
                                                 <th th:text="${booktype.id}"></th>
                                                 <th th:text="${booktype.code}"></th>
                                                 <th th:text="${booktype.name}"></th>
-                                                <th th:text="${booktype.isDeleted()}"></th>
-<!--                                                <th> <a th:href="@{'/booktype-edit/' + ${booktype.id}}" class="jsgrid-button jsgrid-edit-button">Изменить</a><br></th>-->
-                                                <th> <a th:href="@{'/booktype-edit/' + ${booktype.id}}" class="btn btn-primary">Изменить</a><br></th>
+                                                <th th:text="${booktype.isDeleted()? 'нет':'да'}"></th>
+                                                <th><a th:href="@{'/booktype/' + ${booktype.id}}"
+                                                       class="btn btn-primary">Изменить</a><br></th>
+
+                                                <th><a th:href="@{'/booktype/{id}(id=${booktype.id})/delete' }" th:method="delete"
+                                                       class="btn btn-danger">Удалить</a><br></th>
+
+
                                             </tr>
                                         </table>
                                     </div>
@@ -90,23 +95,23 @@
             </div>
 
             </tr>
-                                        </table>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
+            </table>
         </div>
-
-        <!-- Footer -->
-        <footer th:replace="~{footer :: footer(activeTab)}"></footer>
-        <!-- /Footer -->
-
     </div>
-    <!-- /Main Content -->
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+
+<!-- Footer -->
+<footer th:replace="~{footer :: footer(activeTab)}"></footer>
+<!-- /Footer -->
+
+</div>
+<!-- /Main Content -->
 
 </div>
 <!-- /#wrapper -->

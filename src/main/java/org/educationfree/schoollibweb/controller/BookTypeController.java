@@ -1,34 +1,42 @@
 package org.educationfree.schoollibweb.controller;
 
+
+import lombok.RequiredArgsConstructor;
 import org.educationfree.schoollibweb.model.catalog.BookType;
-import org.educationfree.schoollibweb.model.catalog.Person;
-import org.educationfree.schoollibweb.service.catalog.BookTypeServiceImpl;
-import org.educationfree.schoollibweb.service.catalog.PersonServiceImpl;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.educationfree.schoollibweb.service.catalog.CatalogService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-
-import java.util.List;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
+@RequestMapping("/booktype")
+@RequiredArgsConstructor
 public class BookTypeController {
-    @Autowired
-    private BookTypeServiceImpl bookTypeService;
 
-    @RequestMapping(value = "/booktypes", method = RequestMethod.GET)
-    public String showBookTypeList(Model model){
-        List<BookType> bookTypeList = bookTypeService.findAll();
-        model.addAttribute("booktypes", bookTypeList);
+
+    private final CatalogService<BookType> bookTypeService;
+
+    @GetMapping
+    public String showBookTypeList(Model model) {
+        model.addAttribute("booktypes", bookTypeService.findAll());
         return "booktype";
     }
 
-    @RequestMapping(value = "/booktype-edit/{id}", method = RequestMethod.GET)
-    public String showBookTypeForm(Model model, @PathVariable Long id){
-        BookType bookType = bookTypeService.findById(id).orElseThrow();
-        model.addAttribute("booktype", bookType);
+    @GetMapping(value = "/{id}")
+    public String showBookTypeForm(Model model, @PathVariable Long id) {
+        model.addAttribute("booktype", bookTypeService.findById(id).orElseThrow());
         return "booktype-form";
     }
+//    @PostMapping(value = "/save/{id}")
+//    public String saveBookTypeForm(Model model, @PathVariable Long id) {
+//
+//        model.addAttribute("booktype", bookTypeService.save();
+//        return "booktype-form";
+//    }
+@DeleteMapping("/{id}/delete")
+public String deleteBookType(@PathVariable("id") Long id,Model model) {
+    bookTypeService.deleteById(id);
+
+    return "redirect:/booktype";
+}
 }
