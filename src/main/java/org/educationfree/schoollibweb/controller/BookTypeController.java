@@ -32,8 +32,7 @@ public class BookTypeController {
     @PostMapping("/update")
     public String updateBookType(Model model, BookType bookType, BindingResult bindingResult) {
         bookTypeService.save(bookType);
-//        List<Customer> customerList= customerRepository.findAll();
-//        model.addAttribute("customers", customerList);
+
         return "redirect:/booktype";
     }
 
