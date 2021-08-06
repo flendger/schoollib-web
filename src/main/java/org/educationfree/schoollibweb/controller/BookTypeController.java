@@ -6,6 +6,7 @@ import org.educationfree.schoollibweb.model.catalog.BookType;
 import org.educationfree.schoollibweb.service.catalog.CatalogService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
@@ -27,16 +28,13 @@ public class BookTypeController {
         model.addAttribute("booktype", bookTypeService.findById(id).orElseThrow());
         return "booktype-form";
     }
-//    @PostMapping(value = "/save/{id}")
-//    public String saveBookTypeForm(Model model, @PathVariable Long id) {
-//
-//        model.addAttribute("booktype", bookTypeService.save();
-//        return "booktype-form";
-//    }
-@DeleteMapping("/{id}/delete")
-public String deleteBookType(@PathVariable("id") Long id,Model model) {
-    bookTypeService.deleteById(id);
 
-    return "redirect:/booktype";
-}
+    @PostMapping("/update")
+    public String updateBookType(Model model, BookType bookType, BindingResult bindingResult) {
+        bookTypeService.save(bookType);
+//        List<Customer> customerList= customerRepository.findAll();
+//        model.addAttribute("customers", customerList);
+        return "redirect:/booktype";
+    }
+
 }

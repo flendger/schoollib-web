@@ -69,6 +69,7 @@
                                                 <th>Наименование</th>
                                                 <th>Актуальность</th>
 
+
                                             </tr>
                                             </thead>
 
@@ -79,10 +80,6 @@
                                                 <th th:text="${booktype.isDeleted()? 'нет':'да'}"></th>
                                                 <th><a th:href="@{'/booktype/' + ${booktype.id}}"
                                                        class="btn btn-primary">Изменить</a><br></th>
-
-                                                <th><a th:href="@{'/booktype/{id}(id=${booktype.id})/delete' }" th:method="delete"
-                                                       class="btn btn-danger">Удалить</a><br></th>
-
 
                                             </tr>
                                         </table>
