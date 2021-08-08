@@ -17,14 +17,14 @@ public class PersonController {
     private PersonServiceImpl personService;
 
     @RequestMapping(value = "/person-list", method = RequestMethod.GET)
-    public String showPersonList(Model model){
+    public String showPersonList(Model model) {
         List<Person> personList = personService.findAll();
         model.addAttribute("persons", personList);
         return "person";
     }
 
     @RequestMapping(value = "/person-edit/{id}", method = RequestMethod.GET)
-    public String showPersonForm(Model model, @PathVariable Long id){
+    public String showPersonForm(Model model, @PathVariable Long id) {
         Person person = personService.findById(id).orElseThrow();
         model.addAttribute("person", person);
         return "person-form";

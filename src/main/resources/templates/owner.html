@@ -34,13 +34,13 @@
             <!-- Title -->
             <div class="row heading-bg">
                 <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-                    <h5 class="txt-dark">Тип книги</h5>
+                    <h5 class="txt-dark">Таблица</h5>
                 </div>
                 <!-- Breadcrumb -->
                 <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
                     <ol class="breadcrumb">
                         <li><a href="/"><span>Главная</span></a></li>
-                        <li class="active"><span>Тип книги</span></li>
+                        <li class="active"><span>Владелец</span></li>
                     </ol>
                 </div>
                 <!-- /Breadcrumb -->
@@ -53,7 +53,7 @@
                     <div class="panel panel-default card-view">
                         <div class="panel-heading">
                             <div class="pull-left">
-                                <h6 class="panel-title txt-dark">Таблица</h6>
+                                <h6 class="panel-title txt-dark">Владелец</h6>
                             </div>
                             <div class="clearfix"></div>
                         </div>
@@ -66,19 +66,19 @@
                                             <tr>
                                                 <th>ID</th>
                                                 <th>Код</th>
-                                                <th>Наименование</th>
+                                                <th>Владелец</th>
                                                 <th>Актуальность</th>
 
 
                                             </tr>
                                             </thead>
 
-                                            <tr th:each="booktype : ${booktypes}">
-                                                <th th:text="${booktype.id}"></th>
-                                                <th th:text="${booktype.code}"></th>
-                                                <th th:text="${booktype.name}"></th>
-                                                <th th:text="${booktype.isDeleted()? 'нет':'да'}"></th>
-                                                <th><a th:href="@{'/booktype/' + ${booktype.id}}"
+                                            <tr th:each="owner : ${owners}">
+                                                <th th:text="${owner.id}"></th>
+                                                <th th:text="${owner.code}"></th>
+                                                <th th:text="${owner.name}"></th>
+                                                <th th:text="${owner.isDeleted()? 'нет':'да'}"></th>
+                                                <th><a th:href="@{'/owner/' + ${owner.id}}"
                                                        class="btn btn-primary">Изменить</a><br></th>
 
                                             </tr>
