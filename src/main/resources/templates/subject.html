@@ -34,13 +34,13 @@
             <!-- Title -->
             <div class="row heading-bg">
                 <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-                    <h5 class="txt-dark">Ответственные</h5>
+                    <h5 class="txt-dark">Предметы</h5>
                 </div>
                 <!-- Breadcrumb -->
                 <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
                     <ol class="breadcrumb">
                         <li><a href="/"><span>Главная</span></a></li>
-                        <li class="active"><span>Ответственные</span></li>
+                        <li class="active"><span>Предметы</span></li>
                     </ol>
                 </div>
                 <!-- /Breadcrumb -->
@@ -59,21 +59,13 @@
                                             <thead>
                                             <tr>
                                                 <th>Код</th>
-                                                <th>ФИО</th>
-                                                <th>Email</th>
-                                                <th>Телефон</th>
-                                                <th>Адрес</th>
-                                                <th>Комментарий</th>
+                                                <th>Наименование</th>
                                             </tr>
                                             </thead>
-                                            <!--/*@thymesVar id="person" type="org.educationfree.schoollibweb.model.catalog.Person"*/-->
-                                            <tr th:each="person : ${persons}">
-                                                <th><a th:href="@{'/person/' + ${person.id}}" th:text="${person.code}"></a></th>
-                                                <th><a th:href="@{'/person/' + ${person.id}}" th:text="${person.name}"></a></th>
-                                                <th><a th:href="@{'/person/' + ${person.id}}" th:text="${person.email}"></a></th>
-                                                <th><a th:href="@{'/person/' + ${person.id}}" th:text="${person.telephone}"></a></th>
-                                                <th><a th:href="@{'/person/' + ${person.id}}" th:text="${person.address}"></a></th>
-                                                <th><a th:href="@{'/person/' + ${person.id}}" th:text="${person.comment}"></a></th>
+                                            <!--/*@thymesVar id="person" type="org.educationfree.schoollibweb.model.catalog.Subject"*/-->
+                                            <tr th:each="subject : ${subjects}">
+                                                <th><a th:href="@{'/subject/' + ${subject.id}}" th:text="${subject.code}"></a></th>
+                                                <th><a th:href="@{'/subject/' + ${subject.id}}" th:text="${subject.name}"></a></th>
                                             </tr>
                                         </table>
                                     </div>

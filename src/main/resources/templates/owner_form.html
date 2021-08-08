@@ -34,14 +34,15 @@
             <!-- Title -->
             <div class="row heading-bg">
                 <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-                    <h5 class="txt-dark">Ответственные</h5>
+                    <h5 class="txt-dark">Владелец</h5>
                 </div>
 
                 <!-- Breadcrumb -->
                 <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
                     <ol class="breadcrumb">
                         <li><a href="/">Главная</a></li>
-                        <li class="active"><span>Ответственные</span></li>
+                        <li><a href="/owner">Владельцы</a></li>
+                        <li class="active"><span>Владелец</span></li>
                     </ol>
                 </div>
                 <!-- /Breadcrumb -->
@@ -53,64 +54,34 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="panel panel-default card-view">
-                        <div class="panel-heading">
-                            <div class="pull-left">
-                                <h6 class="panel-title txt-dark">Ответственные</h6>
-                            </div>
-                            <div class="clearfix"></div>
-                        </div>
                         <div class="panel-wrapper collapse in">
                             <div class="panel-body">
                                 <div class="row">
                                     <div class="col-sm-12 col-xs-12">
                                         <div class="form-wrap">
-                                            <form th:action="d" th:object="${person}" method="post"
+                                            <form th:action="d" th:object="${owner}" method="post"
                                                   enctype="multipart/form-data">
                                                 <input th:field="*{id}" type="hidden" class="form-control">
 
                                                 <div class="form-group">
+                                                    <label class="control-label mb-10" >Код</label>
+                                                    <div class="input-group">
+                                                        <input type="text" class="form-control" placeholder="Код" th:field="*{code}">
+                                                        <div class="input-group-addon"></i></div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
                                                     <label class="control-label mb-10" >ФИО</label>
                                                     <div class="input-group">
-                                                        <input type="text" class="form-control" placeholder="Email" th:field="*{name}">
-                                                        <div class="input-group-addon"></i></div>
-                                                    </div>
-                                                </div>
-
-                                                <div class="form-group">
-                                                    <label class="control-label mb-10" >Email</label>
-                                                    <div class="input-group">
-                                                        <input type="email" class="form-control" placeholder="Email" th:field="*{email}">
-                                                        <div class="input-group-addon"></i></div>
-                                                    </div>
-                                                </div>
-
-                                                <div class="form-group">
-                                                    <label class="control-label mb-10" >Телефон</label>
-                                                    <div class="input-group">
-                                                        <input type="number" class="form-control" placeholder="Address" th:field="*{telephone}">
-                                                        <div class="input-group-addon"></i></div>
-                                                    </div>
-                                                </div>
-
-                                                <div class="form-group">
-                                                    <label class="control-label mb-10" >Адрес</label>
-                                                    <div class="input-group">
-                                                        <input type="text" class="form-control" placeholder="Address" th:field="*{address}">
-                                                        <div class="input-group-addon"></i></div>
-                                                    </div>
-                                                </div>
-
-                                                <div class="form-group">
-                                                    <label class="control-label mb-10" >Комментарий</label>
-                                                    <div class="input-group">
-                                                        <input type="text" class="form-control" placeholder="Comment" th:field="*{comment}">
+                                                        <input type="text" class="form-control" placeholder="ФИО" th:field="*{name}">
                                                         <div class="input-group-addon"></i></div>
                                                     </div>
                                                 </div>
 
                                                 <div class="form-group mb-0">
                                                     <button type="submit" class="btn btn-success  mr-10">Сохранить</button>
-                                                    <button type="submit" class="btn btn-default  ">Назад</button>
+                                                    <button type="button" class="btn btn-default" onclick="history.back();">Назад</button>
                                                 </div>
                                             </form>
                                         </div>
