@@ -6,7 +6,6 @@ import org.educationfree.schoollibweb.model.catalog.Owner;
 import org.educationfree.schoollibweb.service.catalog.CatalogService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -16,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/owner")
 @RequiredArgsConstructor
 public class OwnerController {
-
 
     private final CatalogService<Owner> ownerService;
 
@@ -29,14 +27,13 @@ public class OwnerController {
     @GetMapping(value = "/{id}")
     public String showOwnerForm(Model model, @PathVariable Long id) {
         model.addAttribute("owner", ownerService.findById(id).orElseThrow());
-        return "owner-form";
+        return "owner_form";
     }
 
-    @PostMapping("/update")
-    public String updateOwner(Model model, Owner owner, BindingResult bindingResult) {
+    @PostMapping
+    public String updateOwner(Owner owner) {
         ownerService.save(owner);
 
         return "redirect:/owner";
     }
-
 }

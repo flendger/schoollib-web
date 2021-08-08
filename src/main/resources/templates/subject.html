@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html lang="ru">
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta charset="UTF-8"/>
@@ -34,12 +33,12 @@
             <!-- Title -->
             <div class="row heading-bg">
                 <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-                    <h5 class="txt-dark">Таблица</h5>
+                    <h5 class="txt-dark">Предметы</h5>
                 </div>
                 <!-- Breadcrumb -->
                 <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
                     <ol class="breadcrumb">
-                        <li><a href="/"><span>Главная</span></a></li>
+                        <li><a th:href="@{/}"><span>Главная</span></a></li>
                         <li class="active"><span>Предметы</span></li>
                     </ol>
                 </div>
@@ -51,36 +50,21 @@
             <div class="row">
                 <div class="col-sm-12">
                     <div class="panel panel-default card-view">
-                        <div class="panel-heading">
-                            <div class="pull-left">
-                                <h6 class="panel-title txt-dark">Предметы</h6>
-                            </div>
-                            <div class="clearfix"></div>
-                        </div>
                         <div class="panel-wrapper collapse in">
                             <div class="panel-body">
                                 <div class="table-wrap">
                                     <div class="table-responsive">
-                                        <table id="datable_1" class="table table-hover display  pb-30">
+                                        <table id="datable_1" class="table table-hover display  pb-30" >
                                             <thead>
                                             <tr>
-                                                <th>ID</th>
                                                 <th>Код</th>
                                                 <th>Наименование</th>
-                                                <th>Актуальность</th>
-
-
                                             </tr>
                                             </thead>
-
+                                            <!--/*@thymesVar id="person" type="org.educationfree.schoollibweb.model.catalog.Subject"*/-->
                                             <tr th:each="subject : ${subjects}">
-                                                <th th:text="${subject.id}"></th>
-                                                <th th:text="${subject.code}"></th>
-                                                <th th:text="${subject.name}"></th>
-                                                <th th:text="${subject.isDeleted()? 'нет':'да'}"></th>
-                                                <th><a th:href="@{'/subject/' + ${subject.id}}"
-                                                       class="btn btn-primary">Изменить</a><br></th>
-
+                                                <th><a th:href="@{'/subject/' + ${subject.id}}" th:text="${subject.code}"></a></th>
+                                                <th><a th:href="@{'/subject/' + ${subject.id}}" th:text="${subject.name}"></a></th>
                                             </tr>
                                         </table>
                                     </div>
@@ -91,24 +75,14 @@
                 </div>
             </div>
 
-            </tr>
-            </table>
         </div>
+
+        <!-- Footer -->
+        <footer th:replace="~{footer :: footer(activeTab)}"></footer>
+        <!-- /Footer -->
+
     </div>
-</div>
-</div>
-</div>
-</div>
-</div>
-
-</div>
-
-<!-- Footer -->
-<footer th:replace="~{footer :: footer(activeTab)}"></footer>
-<!-- /Footer -->
-
-</div>
-<!-- /Main Content -->
+    <!-- /Main Content -->
 
 </div>
 <!-- /#wrapper -->

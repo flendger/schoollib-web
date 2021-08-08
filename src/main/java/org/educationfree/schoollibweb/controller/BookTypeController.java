@@ -6,14 +6,13 @@ import org.educationfree.schoollibweb.model.catalog.BookType;
 import org.educationfree.schoollibweb.service.catalog.CatalogService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/booktype")
+@RequestMapping("/book_type")
 @RequiredArgsConstructor
 public class BookTypeController {
 
@@ -22,21 +21,20 @@ public class BookTypeController {
 
     @GetMapping
     public String showBookTypeList(Model model) {
-        model.addAttribute("booktypes", bookTypeService.findAll());
-        return "booktype";
+        model.addAttribute("book_types", bookTypeService.findAll());
+        return "book_type";
     }
 
     @GetMapping(value = "/{id}")
     public String showBookTypeForm(Model model, @PathVariable Long id) {
-        model.addAttribute("booktype", bookTypeService.findById(id).orElseThrow());
-        return "booktype-form";
+        model.addAttribute("book_type", bookTypeService.findById(id).orElseThrow());
+        return "book_type_form";
     }
 
-    @PostMapping("/update")
-    public String updateBookType(Model model, BookType bookType, BindingResult bindingResult) {
+    @PostMapping
+    public String updateBookType(BookType bookType) {
         bookTypeService.save(bookType);
 
-        return "redirect:/booktype";
+        return "redirect:/book_type";
     }
-
 }

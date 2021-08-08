@@ -6,7 +6,6 @@ import org.educationfree.schoollibweb.model.catalog.Publisher;
 import org.educationfree.schoollibweb.service.catalog.CatalogService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -16,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/publisher")
 @RequiredArgsConstructor
 public class PublisherController {
-
 
     private final CatalogService<Publisher> publisherService;
 
@@ -29,14 +27,13 @@ public class PublisherController {
     @GetMapping(value = "/{id}")
     public String showPublishertForm(Model model, @PathVariable Long id) {
         model.addAttribute("publisher", publisherService.findById(id).orElseThrow());
-        return "publisher-form";
+        return "publisher_form";
     }
 
-    @PostMapping("/update")
-    public String updatePublisher(Model model, Publisher publisher, BindingResult bindingResult) {
+    @PostMapping
+    public String updatePublisher(Publisher publisher) {
         publisherService.save(publisher);
 
         return "redirect:/publisher";
     }
-
 }

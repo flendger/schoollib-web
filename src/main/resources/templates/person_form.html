@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html lang="ru">
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta charset="UTF-8"/>
@@ -40,8 +39,8 @@
                 <!-- Breadcrumb -->
                 <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
                     <ol class="breadcrumb">
-                        <li><a href="/">Главная</a></li>
-                        <li><a href="/person">Ответственные</a></li>
+                        <li><a th:href="@{/}">Главная</a></li>
+                        <li><a th:href="@{/person}">Ответственные</a></li>
                         <li class="active"><span>Ответственный</span></li>
                     </ol>
                 </div>
@@ -59,47 +58,47 @@
                                 <div class="row">
                                     <div class="col-sm-12 col-xs-12">
                                         <div class="form-wrap">
-                                            <form th:action="d" th:object="${person}" method="post"
+                                            <form th:object="${person}" th:method="post" th:action="@{/person}"
                                                   enctype="multipart/form-data">
                                                 <input th:field="*{id}" type="hidden" class="form-control">
 
                                                 <div class="form-group">
-                                                    <label class="control-label mb-10" >ФИО</label>
+                                                    <label class="control-label mb-10" for="name">ФИО</label>
                                                     <div class="input-group">
-                                                        <input type="text" class="form-control" placeholder="ФИО" th:field="*{name}">
-                                                        <div class="input-group-addon"></i></div>
+                                                        <input id="name" type="text" class="form-control" placeholder="ФИО" th:field="*{name}">
+                                                        <div class="input-group-addon"></div>
                                                     </div>
                                                 </div>
 
                                                 <div class="form-group">
-                                                    <label class="control-label mb-10" >Email</label>
+                                                    <label class="control-label mb-10" for="email">Email</label>
                                                     <div class="input-group">
-                                                        <input type="email" class="form-control" placeholder="Email" th:field="*{email}">
-                                                        <div class="input-group-addon"></i></div>
+                                                        <input id="email" type="email" class="form-control" placeholder="Email" th:field="*{email}">
+                                                        <div class="input-group-addon"></div>
                                                     </div>
                                                 </div>
 
                                                 <div class="form-group">
-                                                    <label class="control-label mb-10" >Телефон</label>
+                                                    <label class="control-label mb-10" for="phone">Телефон</label>
                                                     <div class="input-group">
-                                                        <input type="number" class="form-control" placeholder="Телефон" th:field="*{telephone}">
-                                                        <div class="input-group-addon"></i></div>
+                                                        <input id="phone" type="number" class="form-control" placeholder="Телефон" th:field="*{telephone}">
+                                                        <div class="input-group-addon"></div>
                                                     </div>
                                                 </div>
 
                                                 <div class="form-group">
-                                                    <label class="control-label mb-10" >Адрес</label>
+                                                    <label class="control-label mb-10" for="address">Адрес</label>
                                                     <div class="input-group">
-                                                        <input type="text" class="form-control" placeholder="Адрес" th:field="*{address}">
-                                                        <div class="input-group-addon"></i></div>
+                                                        <input id="address" type="text" class="form-control" placeholder="Адрес" th:field="*{address}">
+                                                        <div class="input-group-addon"></div>
                                                     </div>
                                                 </div>
 
                                                 <div class="form-group">
-                                                    <label class="control-label mb-10" >Комментарий</label>
+                                                    <label class="control-label mb-10" for="comment">Комментарий</label>
                                                     <div class="input-group">
-                                                        <input type="text" class="form-control" placeholder="Комментарий" th:field="*{comment}">
-                                                        <div class="input-group-addon"></i></div>
+                                                        <input id="comment" type="text" class="form-control" placeholder="Комментарий" th:field="*{comment}">
+                                                        <div class="input-group-addon"></div>
                                                     </div>
                                                 </div>
 

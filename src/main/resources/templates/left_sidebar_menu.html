@@ -1,9 +1,9 @@
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
 
 <div class="fixed-sidebar-left" th:fragment="left_sidebar(activeTab)">
     <ul class="nav navbar-nav side-nav nicescroll-bar">
         <li class="navigation-header">
-            <span>Билиотека</span>
+            <span>Библиотека</span>
             <i class="zmdi zmdi-more"></i>
         </li>
         <li>
@@ -14,25 +14,25 @@
             </a>
             <ul id="dropdown_dr_lv1" class="collapse collapse-level-1">
                 <li>
-                    <a href="#">Книги</a>
+                    <a th:href="@{/book}">Книги</a>
                 </li>
                 <li>
-                    <a href="/booktype">Типы книг</a>
+                    <a th:href="@{/book_type}">Типы книг</a>
                 </li>
                 <li>
-                    <a href="/owner">Владельцы</a>
+                    <a th:href="@{/owner}">Владельцы</a>
                 </li>
                 <li>
-                    <a href="/publisher">Издательство</a>
+                    <a th:href="@{/publisher}">Издательство</a>
                 </li>
                 <li>
-                    <a href="/subject">Предметы</a>
+                    <a th:href="@{/subject}">Предметы</a>
                 </li>
                 <li>
-                    <a href="#">Места хранения</a>
+                    <a th:href="@{/location}">Места хранения</a>
                 </li>
                 <li>
-                    <a href="/person-list">Ответстевнные</a>
+                    <a th:href="@{/person}">Ответственные</a>
                 </li>
             </ul>
         </li>
@@ -44,10 +44,10 @@
             </a>
             <ul id="dropdown_dr_lv2" class="collapse collapse-level-1">
                 <li>
-                    <a href="#">Инвентаризация</a>
+                    <a th:href="@{#}">Инвентаризация</a>
                 </li>
                 <li>
-                    <a href="#">Поступления от издательства</a>
+                    <a th:href="@{#}">Поступления от издательства</a>
                 </li>
             </ul>
         </li>
@@ -59,7 +59,7 @@
             </a>
             <ul id="dropdown_dr_lv3" class="collapse collapse-level-1">
                 <li>
-                    <a href="#">Остатки книг</a>
+                    <a th:href="@{#}">Остатки книг</a>
                 </li>
             </ul>
         </li>
