@@ -8,6 +8,7 @@ import javax.persistence.*;
 @Table(name = "books")
 @Getter
 @Setter
+@NoArgsConstructor
 public class Book extends AbstractCatalog {
     @ManyToOne
     @JoinColumn(name = "book_type_id")
@@ -42,6 +43,33 @@ public class Book extends AbstractCatalog {
 
     @Column(name = "price")
     private double price;
+
+    public Book(Long id,
+                boolean isDeleted,
+                Integer code,
+                String name,
+                BookType bookType,
+                Subject subject,
+                Publisher publisher,
+                Owner owner,
+                String author,
+                int classFrom,
+                int classTo,
+                int year,
+                boolean ownership,
+                double price) {
+        super(id, isDeleted, code, name);
+        this.bookType = bookType;
+        this.subject = subject;
+        this.publisher = publisher;
+        this.owner = owner;
+        this.author = author;
+        this.classFrom = classFrom;
+        this.classTo = classTo;
+        this.year = year;
+        this.ownership = ownership;
+        this.price = price;
+    }
 
     public void setPrice(double price) {
         this.price = (double) Math.round(price*100)/100;
