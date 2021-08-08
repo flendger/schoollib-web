@@ -4,15 +4,15 @@
 $(document).ready(function() {
 	"use strict";
 	
-	$.toast({
-		heading: 'Welcome to Doodle',
-		text: 'Use the predefined ones, or specify a custom position object.',
-		position: 'top-right',
-		loaderBg:'#e69a2a',
-		icon: 'success',
-		hideAfter: 3500, 
-		stack: 6
-	});
+	// $.toast({
+	// 	heading: 'Welcome to Doodle',
+	// 	text: 'Use the predefined ones, or specify a custom position object.',
+	// 	position: 'top-right',
+	// 	loaderBg:'#e69a2a',
+	// 	icon: 'success',
+	// 	hideAfter: 3500,
+	// 	stack: 6
+	// });
 	
 	$('.tst1').on('click',function(e){
 	    $.toast().reset('all'); 
@@ -47,15 +47,15 @@ $(document).ready(function() {
 	$('.tst3').on('click',function(e){
         $.toast().reset('all');
 		$("body").removeAttr('class');
-		$.toast({
-            heading: 'Welcome to Doodle',
-            text: 'Use the predefined ones, or specify a custom position object.',
-            position: 'top-right',
-            loaderBg:'#e69a2a',
-            icon: 'success',
-            hideAfter: 3500, 
-            stack: 6
-          });
+		// $.toast({
+        //     heading: 'Welcome to Doodle',
+        //     text: 'Use the predefined ones, or specify a custom position object.',
+        //     position: 'top-right',
+        //     loaderBg:'#e69a2a',
+        //     icon: 'success',
+        //     hideAfter: 3500,
+        //     stack: 6
+        //   });
 		return false;  
 	});
 
