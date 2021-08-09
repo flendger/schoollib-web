@@ -54,17 +54,25 @@
                             <div class="panel-body">
                                 <div class="table-wrap">
                                     <div class="table-responsive">
-                                        <table id="datable_1" class="table table-hover display  pb-30" >
+                                        <table id="datable_1" class="table table-hover display  pb-30">
                                             <thead>
+                                            <div class="col-12">
+                                                <a class="btn btn-success" th:href="@{/subject/new}">Добавить</a>
+                                            </div>
+                                            <tr>
                                             <tr>
                                                 <th>Код</th>
                                                 <th>Наименование</th>
+                                                <th>Актуальность</th>
                                             </tr>
                                             </thead>
                                             <!--/*@thymesVar id="person" type="org.educationfree.schoollibweb.model.catalog.Subject"*/-->
                                             <tr th:each="subject : ${subjects}">
-                                                <th><a th:href="@{'/subject/' + ${subject.id}}" th:text="${subject.code}"></a></th>
-                                                <th><a th:href="@{'/subject/' + ${subject.id}}" th:text="${subject.name}"></a></th>
+                                                <th><a th:href="@{'/subject/' + ${subject.id}}"
+                                                       th:text="${subject.code}"></a></th>
+                                                <th><a th:href="@{'/subject/' + ${subject.id}}"
+                                                       th:text="${subject.name}"></a></th>
+                                                <th th:text="${subject.isDeleted()? 'нет':'да'}"></th>
                                             </tr>
                                         </table>
                                     </div>

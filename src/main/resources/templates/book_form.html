@@ -64,6 +64,14 @@
                                                 <input th:field="*{id}" type="hidden" class="form-control">
 
                                                 <div class="form-group">
+                                                    <label class="control-label mb-10" >Код</label>
+                                                    <div class="input-group">
+                                                        <input type="text" class="form-control" placeholder="Код" th:field="*{code}">
+                                                        <div class="input-group-addon"></i></div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
                                                     <label class="control-label mb-10" >Наименование</label>
                                                     <div class="input-group">
                                                         <input type="text" class="form-control" placeholder="Наименование" th:field="*{name}">
@@ -71,13 +79,13 @@
                                                     </div>
                                                 </div>
 
-                                                <div class="form-group">
-                                                    <label class="control-label mb-10" >Тип книги</label>
-                                                    <div class="input-group">
-                                                        <input type="text" class="form-control" placeholder="Тип книги" th:field="*{bookType.name}">
-                                                        <div class="input-group-addon"></i></div>
-                                                    </div>
-                                                </div>
+<!--                                                <div class="form-group">-->
+<!--                                                    <label class="control-label mb-10" >Тип книги</label>-->
+<!--                                                    <div class="input-group">-->
+<!--                                                        <input type="text" class="form-control" placeholder="Тип книги" th:field="*{bookType.name}">-->
+<!--                                                        <div class="input-group-addon"></i></div>-->
+<!--                                                    </div>-->
+<!--                                                </div>-->
 
                                                 <div class="form-group">
                                                     <label class="control-label mb-10" >Автор</label>

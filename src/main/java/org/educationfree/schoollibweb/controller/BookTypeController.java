@@ -3,6 +3,7 @@ package org.educationfree.schoollibweb.controller;
 
 import lombok.RequiredArgsConstructor;
 import org.educationfree.schoollibweb.model.catalog.BookType;
+import org.educationfree.schoollibweb.model.catalog.Subject;
 import org.educationfree.schoollibweb.service.catalog.CatalogService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -36,5 +37,11 @@ public class BookTypeController {
         bookTypeService.save(bookType);
 
         return "redirect:/book_type";
+    }
+    @GetMapping("/new")
+    public String addBookType(Model model) {
+        BookType bookType = new BookType();
+        model.addAttribute("book_type", bookType);
+        return "book_type_form";
     }
 }

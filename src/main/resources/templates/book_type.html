@@ -56,15 +56,20 @@
                                     <div class="table-responsive">
                                         <table id="datable_1" class="table table-hover display  pb-30" >
                                             <thead>
+                                            <div class="col-12">
+                                                <a class="btn btn-success" th:href="@{/book_type/new}">Добавить</a>
+                                            </div>
                                             <tr>
                                                 <th>Код</th>
                                                 <th>Наименование</th>
+                                                <th>Актуальность</th>
                                             </tr>
                                             </thead>
                                             <!--/*@thymesVar id="person" type="org.educationfree.schoollibweb.model.catalog.Subject"*/-->
                                             <tr th:each="book_type : ${book_types}">
                                                 <th><a th:href="@{'/book_type/' + ${book_type.id}}" th:text="${book_type.code}"></a></th>
                                                 <th><a th:href="@{'/book_type/' + ${book_type.id}}" th:text="${book_type.name}"></a></th>
+                                                <th th:text="${book_type.isDeleted()? 'нет':'да'}"></th>
                                             </tr>
                                         </table>
                                     </div>

@@ -37,4 +37,11 @@ public class SubjectController {
         return "redirect:/subject";
     }
 
+    @GetMapping("/new")
+    public String addSubject(Model model) {
+        Subject subject = new Subject();
+        model.addAttribute("subject", subject);
+        return "subject_form";
+    }
+
 }
