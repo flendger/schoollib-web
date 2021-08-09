@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="schoollib-web:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>schoollib-web</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="schoollib.war">
+      <element id="artifact" artifact-name="schoollib-web:war exploded" />
+    </root>
+  </artifact>
+</component>
