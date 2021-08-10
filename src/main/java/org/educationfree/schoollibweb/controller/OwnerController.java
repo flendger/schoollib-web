@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/owner")
 @RequiredArgsConstructor
 public class OwnerController {
-
     private final CatalogService<Owner> ownerService;
 
     @GetMapping
@@ -33,7 +32,13 @@ public class OwnerController {
     @PostMapping
     public String updateOwner(Owner owner) {
         ownerService.save(owner);
-
         return "redirect:/owner";
+    }
+
+    @GetMapping("/new")
+    public String addOwner( Model model ) {
+        Owner owner = new Owner();
+        model.addAttribute("owner",owner);
+        return "owner_form";
     }
 }

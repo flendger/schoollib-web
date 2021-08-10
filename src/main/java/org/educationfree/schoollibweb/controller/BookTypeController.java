@@ -15,8 +15,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/book_type")
 @RequiredArgsConstructor
 public class BookTypeController {
-
-
     private final CatalogService<BookType> bookTypeService;
 
     @GetMapping
@@ -36,5 +34,12 @@ public class BookTypeController {
         bookTypeService.save(bookType);
 
         return "redirect:/book_type";
+    }
+
+    @GetMapping("/new")
+    public String addBookType(Model model) {
+        BookType bookType = new BookType();
+        model.addAttribute("book_type", bookType);
+        return "book_type_form";
     }
 }

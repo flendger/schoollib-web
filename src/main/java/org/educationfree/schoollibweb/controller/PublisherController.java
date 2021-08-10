@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/publisher")
 @RequiredArgsConstructor
 public class PublisherController {
-
     private final CatalogService<Publisher> publisherService;
 
     @GetMapping
@@ -33,7 +32,13 @@ public class PublisherController {
     @PostMapping
     public String updatePublisher(Publisher publisher) {
         publisherService.save(publisher);
-
         return "redirect:/publisher";
+    }
+
+    @GetMapping("/new")
+    public String addPublisher(Model model) {
+        Publisher publisher = new Publisher();
+        model.addAttribute("publisher", publisher);
+        return "publisher_form";
     }
 }

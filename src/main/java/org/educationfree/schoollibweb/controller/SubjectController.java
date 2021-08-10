@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/subject")
 @RequiredArgsConstructor
 public class SubjectController {
-
     private final CatalogService<Subject> subjectService;
 
     @GetMapping
@@ -37,4 +36,10 @@ public class SubjectController {
         return "redirect:/subject";
     }
 
+    @GetMapping("/new")
+    public String addSubject(Model model) {
+        Subject subject = new Subject();
+        model.addAttribute("subject", subject);
+        return "subject_form";
+    }
 }
