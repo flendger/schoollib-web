@@ -61,11 +61,20 @@
                                             <form th:object="${person}" th:method="post" th:action="@{/person}"
                                                   enctype="multipart/form-data">
                                                 <input th:field="*{id}" type="hidden" class="form-control">
+                                                <div class="form-group">
+                                                    <label class="control-label mb-10" for="code">Код</label>
+                                                    <div class="input-group">
+                                                        <input id="code" type="text" class="form-control"
+                                                               placeholder="Код" th:field="*{code}">
+                                                        <div class="input-group-addon"></div>
+                                                    </div>
+                                                </div>
 
                                                 <div class="form-group">
                                                     <label class="control-label mb-10" for="name">ФИО</label>
                                                     <div class="input-group">
-                                                        <input id="name" type="text" class="form-control" placeholder="ФИО" th:field="*{name}">
+                                                        <input id="name" type="text" class="form-control"
+                                                               placeholder="ФИО" th:field="*{name}">
                                                         <div class="input-group-addon"></div>
                                                     </div>
                                                 </div>
@@ -73,7 +82,8 @@
                                                 <div class="form-group">
                                                     <label class="control-label mb-10" for="email">Email</label>
                                                     <div class="input-group">
-                                                        <input id="email" type="email" class="form-control" placeholder="Email" th:field="*{email}">
+                                                        <input id="email" type="email" class="form-control"
+                                                               placeholder="Email" th:field="*{email}">
                                                         <div class="input-group-addon"></div>
                                                     </div>
                                                 </div>
@@ -81,7 +91,8 @@
                                                 <div class="form-group">
                                                     <label class="control-label mb-10" for="phone">Телефон</label>
                                                     <div class="input-group">
-                                                        <input id="phone" type="number" class="form-control" placeholder="Телефон" th:field="*{telephone}">
+                                                        <input id="phone" type="number" class="form-control"
+                                                               placeholder="Телефон" th:field="*{telephone}">
                                                         <div class="input-group-addon"></div>
                                                     </div>
                                                 </div>
@@ -89,7 +100,8 @@
                                                 <div class="form-group">
                                                     <label class="control-label mb-10" for="address">Адрес</label>
                                                     <div class="input-group">
-                                                        <input id="address" type="text" class="form-control" placeholder="Адрес" th:field="*{address}">
+                                                        <input id="address" type="text" class="form-control"
+                                                               placeholder="Адрес" th:field="*{address}">
                                                         <div class="input-group-addon"></div>
                                                     </div>
                                                 </div>
@@ -97,14 +109,18 @@
                                                 <div class="form-group">
                                                     <label class="control-label mb-10" for="comment">Комментарий</label>
                                                     <div class="input-group">
-                                                        <input id="comment" type="text" class="form-control" placeholder="Комментарий" th:field="*{comment}">
+                                                        <input id="comment" type="text" class="form-control"
+                                                               placeholder="Комментарий" th:field="*{comment}">
                                                         <div class="input-group-addon"></div>
                                                     </div>
                                                 </div>
 
                                                 <div class="form-group mb-0">
-                                                    <button type="submit" class="btn btn-success  mr-10">Сохранить</button>
-                                                    <button type="button" class="btn btn-default" onclick="history.back();">Назад</button>
+                                                    <button type="submit" class="btn btn-success  mr-10">Сохранить
+                                                    </button>
+                                                    <button type="button" class="btn btn-default"
+                                                            onclick="history.back();">Назад
+                                                    </button>
                                                 </div>
                                             </form>
                                         </div>

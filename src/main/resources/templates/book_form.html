@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html lang="ru">
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta charset="UTF-8"/>
@@ -64,72 +63,89 @@
                                                 <input th:field="*{id}" type="hidden" class="form-control">
 
                                                 <div class="form-group">
-                                                    <label class="control-label mb-10" >Наименование</label>
+                                                    <label class="control-label mb-10" for="code">Код</label>
                                                     <div class="input-group">
-                                                        <input type="text" class="form-control" placeholder="Наименование" th:field="*{name}">
-                                                        <div class="input-group-addon"></i></div>
+                                                        <input id="code" type="text" class="form-control" placeholder="Код"
+                                                               th:field="*{code}">
+                                                        <div class="input-group-addon"></div>
                                                     </div>
                                                 </div>
 
                                                 <div class="form-group">
-                                                    <label class="control-label mb-10" >Тип книги</label>
+                                                    <label class="control-label mb-10" for="name">Наименование</label>
                                                     <div class="input-group">
-                                                        <input type="text" class="form-control" placeholder="Тип книги" th:field="*{bookType.name}">
-                                                        <div class="input-group-addon"></i></div>
+                                                        <input id="name" type="text" class="form-control"
+                                                               placeholder="Наименование" th:field="*{name}">
+                                                        <div class="input-group-addon"></div>
+                                                    </div>
+                                                </div>
+
+                                                <!--                                                <div class="form-group">-->
+                                                <!--                                                    <label class="control-label mb-10" >Тип книги</label>-->
+                                                <!--                                                    <div class="input-group">-->
+                                                <!--                                                        <input type="text" class="form-control" placeholder="Тип книги" th:field="*{bookType.name}">-->
+                                                <!--                                                        <div class="input-group-addon"></i></div>-->
+                                                <!--                                                    </div>-->
+                                                <!--                                                </div>-->
+
+                                                <div class="form-group">
+                                                    <label class="control-label mb-10" for="author">Автор</label>
+                                                    <div class="input-group">
+                                                        <input id="author" type="text" class="form-control" placeholder="Автор"
+                                                               th:field="*{author}">
+                                                        <div class="input-group-addon"></div>
                                                     </div>
                                                 </div>
 
                                                 <div class="form-group">
-                                                    <label class="control-label mb-10" >Автор</label>
+                                                    <label class="control-label mb-10" for="year">Год издания</label>
                                                     <div class="input-group">
-                                                        <input type="text" class="form-control" placeholder="Автор" th:field="*{author}">
-                                                        <div class="input-group-addon"></i></div>
+                                                        <input id="year" type="text" class="form-control" placeholder="Год"
+                                                               th:field="*{year}">
+                                                        <div class="input-group-addon"></div>
                                                     </div>
                                                 </div>
 
                                                 <div class="form-group">
-                                                    <label class="control-label mb-10" >Год</label>
+                                                    <label class="control-label mb-10" for="publisher">Издатель</label>
                                                     <div class="input-group">
-                                                        <input type="text" class="form-control" placeholder="Год" th:field="*{year}">
-                                                        <div class="input-group-addon"></i></div>
+                                                        <input id="publisher" type="text" class="form-control" placeholder="Издатель"
+                                                               th:field="*{publisher.name}">
+                                                        <div class="input-group-addon"></div>
                                                     </div>
                                                 </div>
 
                                                 <div class="form-group">
-                                                    <label class="control-label mb-10" >Издатель</label>
+                                                    <label class="control-label mb-10" for="owner">Владелец</label>
                                                     <div class="input-group">
-                                                        <input type="text" class="form-control" placeholder="Издатель" th:field="*{publisher.name}">
-                                                        <div class="input-group-addon"></i></div>
+                                                        <input id="owner" type="text" class="form-control" placeholder="ФИО"
+                                                               th:field="*{owner.name}">
+                                                        <div class="input-group-addon"></div>
                                                     </div>
                                                 </div>
 
                                                 <div class="form-group">
-                                                    <label class="control-label mb-10" >ФИО</label>
                                                     <div class="input-group">
-                                                        <input type="text" class="form-control" placeholder="ФИО" th:field="*{owner.name}">
-                                                        <div class="input-group-addon"></i></div>
+                                                        <label class="control-label mb-10" for="ownership">Собственность</label>
+                                                        <input id="ownership" type="checkbox" th:field="*{ownership}">
                                                     </div>
                                                 </div>
 
                                                 <div class="form-group">
-                                                    <label class="control-label mb-10" >Собственность</label>
+                                                    <label class="control-label mb-10" for="price">Цена</label>
                                                     <div class="input-group">
-                                                        <input type="checkbox" th:field="*{ownership}">
-                                                        <div class="input-group-addon"></i></div>
-                                                    </div>
-                                                </div>
-
-                                                <div class="form-group">
-                                                    <label class="control-label mb-10" >Цена</label>
-                                                    <div class="input-group">
-                                                        <input type="text" class="form-control" placeholder="Цена" th:field="*{price}">
-                                                        <div class="input-group-addon"></i></div>
+                                                        <input id="price" type="text" class="form-control" placeholder="Цена"
+                                                               th:field="*{price}">
+                                                        <div class="input-group-addon"></div>
                                                     </div>
                                                 </div>
 
                                                 <div class="form-group mb-0">
-                                                    <button type="submit" class="btn btn-success  mr-10">Сохранить</button>
-                                                    <button type="button" class="btn btn-default" onclick="history.back();">Назад</button>
+                                                    <button type="submit" class="btn btn-success  mr-10">Сохранить
+                                                    </button>
+                                                    <button type="button" class="btn btn-default"
+                                                            onclick="history.back();">Назад
+                                                    </button>
                                                 </div>
                                             </form>
                                         </div>

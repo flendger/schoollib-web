@@ -46,6 +46,9 @@
             </div>
             <!-- /Title -->
 
+            <div class="pb-5">
+                <a class="btn btn-success" th:href="@{/owner/new}">Добавить</a>
+            </div>
             <!-- Table -->
             <div class="row">
                 <div class="col-sm-12">
@@ -54,7 +57,7 @@
                             <div class="panel-body">
                                 <div class="table-wrap">
                                     <div class="table-responsive">
-                                        <table id="datable_1" class="table table-hover display  pb-30" >
+                                        <table id="datable_1" class="table table-hover display  pb-30">
                                             <thead>
                                             <tr>
                                                 <th>Код</th>
@@ -63,8 +66,10 @@
                                             </thead>
                                             <!--/*@thymesVar id="person" type="org.educationfree.schoollibweb.model.catalog.Subject"*/-->
                                             <tr th:each="owner : ${owners}">
-                                                <th><a th:href="@{'/owner/' + ${owner.id}}" th:text="${owner.code}"></a></th>
-                                                <th><a th:href="@{'/owner/' + ${owner.id}}" th:text="${owner.name}"></a></th>
+                                                <th><a th:href="@{'/owner/' + ${owner.id}}" th:text="${owner.code}"></a>
+                                                </th>
+                                                <th><a th:href="@{'/owner/' + ${owner.id}}" th:text="${owner.name}"></a>
+                                                </th>
                                             </tr>
                                         </table>
                                     </div>
