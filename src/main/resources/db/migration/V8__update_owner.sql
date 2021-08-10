@@ -1,3 +1,3 @@
-ALTER TABLE `school_lib`.`owners`
-ADD COLUMN `created_at` DATETIME NULL AFTER `is_deleted`,
-ADD COLUMN `updated_at` DATETIME NULL AFTER `created_at`;
+alter table owners
+add column created_at timestamp default current_timestamp,
+add column updated_at timestamp default current_timestamp
