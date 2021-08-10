@@ -146,15 +146,15 @@ $(document).ready(function(){
 /*****Load function start*****/
 $(window).load(function(){
 	window.setTimeout(function(){
-		$.toast({
-			heading: 'Welcome to Doodle',
-			text: 'Use the predefined ones, or specify a custom position object.',
-			position: 'top-right',
-			loaderBg:'#e69a2a',
-			icon: 'success',
-			hideAfter: 3500, 
-			stack: 6
-		});
+		// $.toast({
+		// 	heading: 'Welcome to Doodle',
+		// 	text: 'Use the predefined ones, or specify a custom position object.',
+		// 	position: 'top-right',
+		// 	loaderBg:'#e69a2a',
+		// 	icon: 'success',
+		// 	hideAfter: 3500,
+		// 	stack: 6
+		// });
 	}, 3000);
 });
 /*****Load function* end*****/

@@ -34,13 +34,13 @@
             <!-- Title -->
             <div class="row heading-bg">
                 <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-                    <h5 class="txt-dark">Таблица</h5>
+                    <h5 class="txt-dark">Тип книги</h5>
                 </div>
                 <!-- Breadcrumb -->
                 <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
                     <ol class="breadcrumb">
                         <li><a href="/"><span>Главная</span></a></li>
-                        <li class="active"><span>Таблица</span></li>
+                        <li class="active"><span>Тип книги</span></li>
                     </ol>
                 </div>
                 <!-- /Breadcrumb -->
@@ -61,27 +61,27 @@
                             <div class="panel-body">
                                 <div class="table-wrap">
                                     <div class="table-responsive">
-                                        <table id="datable_1" class="table table-hover display  pb-30" >
+                                        <table id="datable_1" class="table table-hover display  pb-30">
                                             <thead>
                                             <tr>
-                                                <th>Name</th>
-                                                <th>Position</th>
-                                                <th>Office</th>
-                                                <th>Age</th>
-                                                <th>Start date</th>
-                                                <th>Salary</th>
+                                                <th>ID</th>
+                                                <th>Код</th>
+                                                <th>Наименование</th>
+                                                <th>Актуальность</th>
+
+
                                             </tr>
                                             </thead>
-                                            <tbody>
-                                            <tr>
-                                                <td>Tiger Nixon</td>
-                                                <td>System Architect</td>
-                                                <td>Edinburgh</td>
-                                                <td>61</td>
-                                                <td>2011/04/25</td>
-                                                <td>$320,800</td>
+
+                                            <tr th:each="booktype : ${booktypes}">
+                                                <th th:text="${booktype.id}"></th>
+                                                <th th:text="${booktype.code}"></th>
+                                                <th th:text="${booktype.name}"></th>
+                                                <th th:text="${booktype.isDeleted()? 'нет':'да'}"></th>
+                                                <th><a th:href="@{'/booktype/' + ${booktype.id}}"
+                                                       class="btn btn-primary">Изменить</a><br></th>
+
                                             </tr>
-                                            </tbody>
                                         </table>
                                     </div>
                                 </div>
@@ -91,14 +91,24 @@
                 </div>
             </div>
 
+            </tr>
+            </table>
         </div>
-
-        <!-- Footer -->
-        <footer th:replace="~{footer :: footer(activeTab)}"></footer>
-        <!-- /Footer -->
-
     </div>
-    <!-- /Main Content -->
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+
+<!-- Footer -->
+<footer th:replace="~{footer :: footer(activeTab)}"></footer>
+<!-- /Footer -->
+
+</div>
+<!-- /Main Content -->
 
 </div>
 <!-- /#wrapper -->
