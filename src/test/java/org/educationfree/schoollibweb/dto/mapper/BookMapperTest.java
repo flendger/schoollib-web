@@ -38,7 +38,7 @@ void init(){
 
     @Test
     void entityToDto() {
-        BookMapper bookMapper = new BookMapper(new ModelMapper());
+        BookMapper bookMapper = new BookMapper(modelMapper);
         Book book = new Book(1L, false, 1, "SomeBook",
                 new BookType(1L, false, 1, "SomeCategory"),
                 new Subject(1L, false, 1, "Math"),
@@ -81,7 +81,7 @@ void init(){
 
     @Test
     void dtoToEntity() {
-        BookMapper bookMapper = new BookMapper(new ModelMapper());
+        BookMapper bookMapper = new BookMapper(modelMapper);
         BookDto bookDto = new BookDto(1L, false, 1, "SomeBook",
                 new BookTypeDto(1L, false, 1, "SomeCategory"),
                 new SubjectDto(1L, false, 1, "Math"),
