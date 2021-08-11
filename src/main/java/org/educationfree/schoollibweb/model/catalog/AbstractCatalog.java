@@ -20,7 +20,8 @@ public abstract class AbstractCatalog extends BaseEntity {
     protected String name;
 
     public AbstractCatalog(Long id, boolean isDeleted, Integer code, String name) {
-        super(id, isDeleted);
+        this.id = id;
+        this.isDeleted = isDeleted;
         this.code = code;
         this.name = name;
     }
