@@ -1,7 +1,9 @@
 package org.educationfree.schoollibweb.config;
 
 import org.educationfree.schoollibweb.dto.BookDto;
+import org.educationfree.schoollibweb.dto.LocationDto;
 import org.educationfree.schoollibweb.model.catalog.Book;
+import org.educationfree.schoollibweb.model.catalog.Location;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.PropertyMap;
 import org.springframework.context.annotation.Bean;
@@ -38,6 +40,20 @@ public class AppConfig implements WebMvcConfigurer {
                 when(ctx -> ctx.getSource() == null ).skip(source.getOwnerDto(),destination.getOwner());
                 when(ctx -> ctx.getSource() == null ).skip(source.getPublisherDto(),destination.getPublisher());
                 when(ctx -> ctx.getSource() == null ).skip(source.getSubjectDto(),destination.getSubject());
+            }
+        });
+        modelMapper.addMappings(new PropertyMap<Location, LocationDto>() {
+            @Override
+            protected void configure() {
+                when(ctx -> ctx.getSource() == null ).skip(source.getLocationType(),destination.getLocationTypeDto());
+                when(ctx -> ctx.getSource() == null ).skip(source.getPerson(),destination.getPersonDto());
+            }
+        });
+        modelMapper.addMappings(new PropertyMap<LocationDto, Location>() {
+            @Override
+            protected void configure() {
+                when(ctx -> ctx.getSource() == null ).skip(source.getLocationTypeDto(),destination.getLocationType());
+                when(ctx -> ctx.getSource() == null ).skip(source.getPersonDto(),destination.getPerson());
             }
         });
         return modelMapper;
