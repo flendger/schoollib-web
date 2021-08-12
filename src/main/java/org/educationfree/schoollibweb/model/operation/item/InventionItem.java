@@ -16,5 +16,5 @@ public class InventionItem extends BaseItemEntity<InventionOperation>{
     private Book book;
 
     @Column(name = "quantity")
-    private float quantity;
+    private int quantity;
 }
