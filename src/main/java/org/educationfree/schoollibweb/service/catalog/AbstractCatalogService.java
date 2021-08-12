@@ -2,6 +2,8 @@ package org.educationfree.schoollibweb.service.catalog;
 
 import org.educationfree.schoollibweb.model.catalog.AbstractCatalog;
 import org.educationfree.schoollibweb.repository.catalog.CatalogRepository;
+import org.springframework.transaction.annotation.Isolation;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
@@ -26,6 +28,7 @@ public abstract class AbstractCatalogService<T extends AbstractCatalog> implemen
     }
 
     @Override
+    @Transactional(isolation = Isolation.SERIALIZABLE)
     public T save(T entity) {
         if (entity.getId() == null && entity.getCode() == null) {
             T last = findLast().orElse(null);
