@@ -56,9 +56,10 @@ public abstract class AbstractCatalogService<T extends AbstractCatalog> implemen
 
     @Override
     public void setDeleted(Long id) {
-
-        T entity = getEntityRepository().findById(id).get();
-        entity.setDeleted(true);
-        getEntityRepository().save(entity);
+        if (getEntityRepository().findById(id).isPresent()) {
+            T entity = getEntityRepository().findById(id).get();
+            entity.setDeleted(true);
+            getEntityRepository().save(entity);
+        }
     }
 }
