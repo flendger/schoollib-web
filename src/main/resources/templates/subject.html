@@ -70,6 +70,8 @@
                                                        th:text="${subject.code}"></a></th>
                                                 <th><a th:href="@{'/subject/' + ${subject.id}}"
                                                        th:text="${subject.name}"></a></th>
+                                                <th><a class="btn btn-danger"
+                                                       th:href="@{'/subject/delete/'+${subject.id}}">Удалить</a></th>
                                             </tr>
                                         </table>
                                     </div>

@@ -42,4 +42,10 @@ public class SubjectController {
         model.addAttribute("subject", subject);
         return "subject_form";
     }
+
+    @GetMapping(value = "/delete/{id}")
+    public String deleteSubject(Model model, @PathVariable Long id) {
+        subjectService.setDeleted(id);
+        return "redirect:/subject";
+    }
 }

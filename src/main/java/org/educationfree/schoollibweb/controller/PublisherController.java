@@ -41,4 +41,10 @@ public class PublisherController {
         model.addAttribute("publisher", publisher);
         return "publisher_form";
     }
+
+    @GetMapping(value = "/delete/{id}")
+    public String deletePublisher(Model model, @PathVariable Long id) {
+        publisherService.setDeleted(id);
+        return "redirect:/publisher";
+    }
 }

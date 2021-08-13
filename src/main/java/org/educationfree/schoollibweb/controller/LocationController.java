@@ -41,4 +41,10 @@ public class LocationController {
         model.addAttribute("location",location);
         return "location_form";
     }
+    @GetMapping(value = "/delete/{id}")
+    public String deleteLocation(Model model, @PathVariable Long id) {
+        locationService.setDeleted(id);
+
+        return "redirect:/location";
+    }
 }

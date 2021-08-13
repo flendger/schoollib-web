@@ -76,6 +76,8 @@
                                                 <th><a th:href="@{'/person/' + ${person.id}}" th:text="${person.telephone}"></a></th>
                                                 <th><a th:href="@{'/person/' + ${person.id}}" th:text="${person.address}"></a></th>
                                                 <th><a th:href="@{'/person/' + ${person.id}}" th:text="${person.comment}"></a></th>
+                                                <th> <a class="btn btn-danger" th:href="@{'/person/delete/'+${person.id}}" >Удалить</a></th>
+
                                             </tr>
                                         </table>
                                     </div>

@@ -87,6 +87,7 @@
                                                 <th><a th:href="@{'/book/' + ${book.id}}" th:text="${book.owner.name}"></a></th>
                                                 <th><input type="checkbox" th:checked="${book.ownership}" disabled></th>
                                                 <th><a th:href="@{'/book/' + ${book.id}}" th:text="${book.price}"></a></th>
+                                                <th> <a class="btn btn-danger" th:href="@{'/book/delete/'+${book.id}}" >Удалить</a></th>
                                             </tr>
                                         </table>
                                     </div>
