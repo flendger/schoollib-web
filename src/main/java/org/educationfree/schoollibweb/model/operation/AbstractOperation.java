@@ -15,7 +15,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 public abstract class AbstractOperation extends BaseEntity {
     @Column(name = "doc_num")
-    private int docNumber;
+    private Integer docNumber;
 
     @Column(name = "doc_date")
     private LocalDateTime docDate;
