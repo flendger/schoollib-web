@@ -8,6 +8,7 @@ import org.educationfree.schoollibweb.model.operation.InventionOperation;
 import javax.persistence.*;
 
 @Entity
+@Table(name = "invention_items")
 @Getter
 @Setter
 public class InventionItem extends BaseItemEntity<InventionOperation>{

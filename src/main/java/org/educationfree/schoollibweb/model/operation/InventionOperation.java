@@ -9,6 +9,7 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
+@Table(name = "inventions")
 @Getter
 @Setter
 public class InventionOperation extends AbstractOperation{
