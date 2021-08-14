@@ -39,10 +39,10 @@ public class BookController {
         model.addAttribute("book",book);
         return "book_form";
     }
-    @GetMapping(value = "/delete/{id}")
-    public String deleteBook(Model model, @PathVariable Long id) {
-        bookService.setDeleted(id);
 
+    @GetMapping(value = "/delete/{id}")
+    public String deleteBook(@PathVariable Long id) {
+        bookService.setDeleted(id);
         return "redirect:/book";
     }
 }

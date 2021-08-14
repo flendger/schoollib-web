@@ -43,7 +43,7 @@ public class PublisherController {
     }
 
     @GetMapping(value = "/delete/{id}")
-    public String deletePublisher(Model model, @PathVariable Long id) {
+    public String deletePublisher(@PathVariable Long id) {
         publisherService.setDeleted(id);
         return "redirect:/publisher";
     }

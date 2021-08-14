@@ -43,7 +43,7 @@ public class OwnerController {
     }
 
     @GetMapping(value = "/delete/{id}")
-    public String deleteOwner(Model model, @PathVariable Long id) {
+    public String deleteOwner(@PathVariable Long id) {
         ownerService.setDeleted(id);
         return "redirect:/owner";
     }

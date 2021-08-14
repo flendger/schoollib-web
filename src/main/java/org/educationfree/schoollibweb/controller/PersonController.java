@@ -42,10 +42,8 @@ public class PersonController {
     }
 
     @GetMapping(value = "/delete/{id}")
-    public String deletePerson(Model model, @PathVariable Long id) {
+    public String deletePerson(@PathVariable Long id) {
         personService.setDeleted(id);
-
         return "redirect:/person";
     }
-
 }
