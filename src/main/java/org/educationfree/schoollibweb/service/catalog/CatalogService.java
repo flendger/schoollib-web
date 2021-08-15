@@ -11,4 +11,5 @@ public interface CatalogService<T> {
     void delete(T entity);
     void deleteById(Long id);
     Optional<T> findLast();
+    void setDeleted(Long id, boolean isDeleted);
 }

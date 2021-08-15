@@ -36,9 +36,15 @@ public class OwnerController {
     }
 
     @GetMapping("/new")
-    public String addOwner( Model model ) {
+    public String addOwner(Model model) {
         Owner owner = new Owner();
-        model.addAttribute("owner",owner);
+        model.addAttribute("owner", owner);
         return "owner_form";
+    }
+
+    @GetMapping(value = "/delete/{id}") //TODO: DeleteMapping
+    public String deleteOwner(@PathVariable Long id) {
+        ownerService.setDeleted(id, true); //TODO: handle EntityNotFoundException
+        return "redirect:/owner";
     }
 }

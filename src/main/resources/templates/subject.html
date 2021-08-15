@@ -62,6 +62,7 @@
                                             <tr>
                                                 <th>Код</th>
                                                 <th>Наименование</th>
+                                                <th></th>
                                             </tr>
                                             </thead>
                                             <!--/*@thymesVar id="person" type="org.educationfree.schoollibweb.model.catalog.Subject"*/-->
@@ -70,6 +71,8 @@
                                                        th:text="${subject.code}"></a></th>
                                                 <th><a th:href="@{'/subject/' + ${subject.id}}"
                                                        th:text="${subject.name}"></a></th>
+                                                <th><a class="btn btn-danger"
+                                                       th:href="@{'/subject/delete/'+${subject.id}}">Удалить</a></th>
                                             </tr>
                                         </table>
                                     </div>

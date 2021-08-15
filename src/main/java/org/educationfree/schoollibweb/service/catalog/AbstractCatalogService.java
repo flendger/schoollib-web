@@ -56,4 +56,13 @@ public abstract class AbstractCatalogService<T extends AbstractCatalog> implemen
     public Optional<T> findLast() {
         return getEntityRepository().findTopByOrderByCodeDesc();
     }
+
+    @Override
+    @Transactional
+    public void setDeleted(Long id, boolean isDeleted) throws EntityNotFoundException {
+        CatalogRepository<T> repository = getEntityRepository();
+        T entity = repository.getById(id);
+        entity.setDeleted(isDeleted);
+        repository.save(entity);
+    }
 }
