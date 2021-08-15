@@ -42,9 +42,9 @@ public class OwnerController {
         return "owner_form";
     }
 
-    @GetMapping(value = "/delete/{id}")
+    @GetMapping(value = "/delete/{id}") //TODO: DeleteMapping
     public String deleteOwner(@PathVariable Long id) {
-        ownerService.setDeleted(id, true);
+        ownerService.setDeleted(id, true); //TODO: handle EntityNotFoundException
         return "redirect:/owner";
     }
 }

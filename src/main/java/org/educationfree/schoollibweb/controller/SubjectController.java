@@ -43,9 +43,9 @@ public class SubjectController {
         return "subject_form";
     }
 
-    @GetMapping(value = "/delete/{id}")
+    @GetMapping(value = "/delete/{id}") //TODO: DeleteMapping
     public String deleteSubject(@PathVariable Long id) {
-        subjectService.setDeleted(id, true);
+        subjectService.setDeleted(id, true); //TODO: handle EntityNotFoundException
         return "redirect:/subject";
     }
 }

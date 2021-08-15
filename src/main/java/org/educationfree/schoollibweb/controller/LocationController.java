@@ -42,9 +42,9 @@ public class LocationController {
         return "location_form";
     }
 
-    @GetMapping(value = "/delete/{id}")
+    @GetMapping(value = "/delete/{id}") //TODO: DeleteMapping
     public String deleteLocation(@PathVariable Long id) {
-        locationService.setDeleted(id, true);
+        locationService.setDeleted(id, true); //TODO: handle EntityNotFoundException
         return "redirect:/location";
     }
 }

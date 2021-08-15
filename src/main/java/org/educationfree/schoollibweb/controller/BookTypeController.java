@@ -43,9 +43,9 @@ public class BookTypeController {
         return "book_type_form";
     }
 
-    @GetMapping(value = "/delete/{id}")
+    @GetMapping(value = "/delete/{id}") //TODO: DeleteMapping
     public String deleteBookType(@PathVariable Long id) {
-        bookTypeService.setDeleted(id, true);
+        bookTypeService.setDeleted(id, true); //TODO: handle EntityNotFoundException
         return "redirect:/book_type";
     }
 }

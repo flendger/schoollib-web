@@ -42,9 +42,9 @@ public class PublisherController {
         return "publisher_form";
     }
 
-    @GetMapping(value = "/delete/{id}")
+    @GetMapping(value = "/delete/{id}") //TODO: DeleteMapping
     public String deletePublisher(@PathVariable Long id) {
-        publisherService.setDeleted(id, true);
+        publisherService.setDeleted(id, true); //TODO: handle EntityNotFoundException
         return "redirect:/publisher";
     }
 }

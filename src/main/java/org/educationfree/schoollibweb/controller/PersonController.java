@@ -41,9 +41,9 @@ public class PersonController {
         return "person_form";
     }
 
-    @GetMapping(value = "/delete/{id}")
+    @GetMapping(value = "/delete/{id}") //TODO: DeleteMapping
     public String deletePerson(@PathVariable Long id) {
-        personService.setDeleted(id, true);
+        personService.setDeleted(id, true); //TODO: handle EntityNotFoundException
         return "redirect:/person";
     }
 }
