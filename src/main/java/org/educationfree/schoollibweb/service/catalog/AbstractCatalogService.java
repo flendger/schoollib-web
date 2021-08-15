@@ -5,6 +5,7 @@ import org.educationfree.schoollibweb.repository.catalog.CatalogRepository;
 import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.persistence.EntityNotFoundException;
 import java.util.List;
 import java.util.Optional;
 
