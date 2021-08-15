@@ -1,6 +1,6 @@
 package org.educationfree.schoollibweb.repository.operation.model;
 
-import org.educationfree.schoollibweb.model.operation.InventionOperation;
+import org.educationfree.schoollibweb.model.operation.Invention;
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +17,7 @@ class InventionRepositoryTest {
 
     @Test
     void getLastByNumber() {
-        Optional<InventionOperation> inventionOperation = inventionRepository.findTopByOrderByDocNumberDesc();
+        Optional<Invention> inventionOperation = inventionRepository.findTopByOrderByDocNumberDesc();
         assertEquals(Optional.class, inventionOperation.getClass());
     }
 }

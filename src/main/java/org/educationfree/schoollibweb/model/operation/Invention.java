@@ -12,7 +12,7 @@ import java.util.List;
 @Table(name = "inventions")
 @Getter
 @Setter
-public class InventionOperation extends AbstractOperation{
+public class Invention extends AbstractOperation{
     @Column(name = "comment")
     private String comment;
 

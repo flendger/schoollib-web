@@ -2,7 +2,10 @@ package org.educationfree.schoollibweb.service.operation;
 
 import org.educationfree.schoollibweb.model.operation.AbstractOperation;
 import org.educationfree.schoollibweb.repository.operation.OperationRepository;
+import org.springframework.transaction.annotation.Isolation;
+import org.springframework.transaction.annotation.Transactional;
 
+import javax.persistence.EntityNotFoundException;
 import java.util.List;
 import java.util.Optional;
 
@@ -26,6 +29,7 @@ public abstract class AbstractOperationService<T extends AbstractOperation> impl
     }
 
     @Override
+    @Transactional(isolation = Isolation.SERIALIZABLE)
     public T save(T entity) {
         if (entity.getId() == null && entity.getDocNumber() == null) {
             T last = findLast().orElse(null);
@@ -52,5 +56,14 @@ public abstract class AbstractOperationService<T extends AbstractOperation> impl
     @Override
     public Optional<T> findLast() {
         return getEntityRepository().findTopByOrderByDocNumberDesc();
+    }
+
+    @Override
+    @Transactional
+    public void setDeleted(Long id, boolean isDeleted) throws EntityNotFoundException {
+        OperationRepository<T> repository = getEntityRepository();
+        T entity = repository.getById(id);
+        entity.setDeleted(isDeleted);
+        repository.save(entity);
     }
 }
