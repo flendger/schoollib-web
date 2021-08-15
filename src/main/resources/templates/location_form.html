@@ -58,6 +58,7 @@
                                 <div class="row">
                                     <div class="col-sm-12 col-xs-12">
                                         <div class="form-wrap">
+                                            <!--/*@thymesVar id="location" type="org.educationfree.schoollibweb.model.catalog.Location"*/-->
                                             <form th:object="${location}" th:method="post" th:action="@{/location}"
                                                   enctype="multipart/form-data">
                                                 <input th:field="*{id}" type="hidden" class="form-control">
@@ -79,17 +80,27 @@
                                                 </div>
 
                                                 <div class="form-group">
-                                                    <label class="control-label mb-10" for="type">Тип</label>
+                                                    <label class="control-label mb-10">Тип</label>
                                                     <div class="input-group">
-                                                        <input id="type" type="text" class="form-control" placeholder="Тип" th:field="*{locationType.name}">
+                                                        <select th:field="*{locationType.id}" class="form-control">
+                                                            <!--/*@thymesVar id="types" type="org.educationfree.schoollibweb.model.catalog.LocationType"*/-->
+                                                            <option th:each="type : ${types}"
+                                                                    th:value="${type.id}"
+                                                                    th:text="${type.name}"></option>
+                                                        </select>
                                                         <div class="input-group-addon"></div>
                                                     </div>
                                                 </div>
 
                                                 <div class="form-group">
-                                                    <label class="control-label mb-10" for="person">ФИО</label>
+                                                    <label class="control-label mb-10">ФИО</label>
                                                     <div class="input-group">
-                                                        <input id="person" type="text" class="form-control" placeholder="ФИО" th:field="*{person.name}">
+                                                        <select th:field="*{person.id}" class="form-control">
+                                                            <!--/*@thymesVar id="persons" type="org.educationfree.schoollibweb.model.catalog.Person"*/-->
+                                                            <option th:each="person : ${persons}"
+                                                                    th:value="${person.id}"
+                                                                    th:text="${person.name}"></option>
+                                                        </select>
                                                         <div class="input-group-addon"></div>
                                                     </div>
                                                 </div>

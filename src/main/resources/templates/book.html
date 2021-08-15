@@ -75,7 +75,7 @@
                                                 <th></th>
                                             </tr>
                                             </thead>
-                                            <!--/*@thymesVar id="person" type="org.educationfree.schoollibweb.model.catalog.Subject"*/-->
+                                            <!--/*@thymesVar id="books" type="org.educationfree.schoollibweb.model.catalog.Book"*/-->
                                             <tr th:each="book : ${books}">
                                                 <th><a th:href="@{'/book/' + ${book.id}}" th:text="${book.code}"></a></th>
                                                 <th><a th:href="@{'/book/' + ${book.id}}" th:text="${book.name}"></a></th>
