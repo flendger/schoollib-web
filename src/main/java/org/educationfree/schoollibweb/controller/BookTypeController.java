@@ -45,7 +45,7 @@ public class BookTypeController {
 
     @GetMapping(value = "/delete/{id}")
     public String deleteBookType(@PathVariable Long id) {
-        bookTypeService.setDeleted(id);
+        bookTypeService.setDeleted(id, true);
         return "redirect:/book_type";
     }
 }

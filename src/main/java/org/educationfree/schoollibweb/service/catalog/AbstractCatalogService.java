@@ -2,7 +2,9 @@ package org.educationfree.schoollibweb.service.catalog;
 
 import org.educationfree.schoollibweb.model.catalog.AbstractCatalog;
 import org.educationfree.schoollibweb.repository.catalog.CatalogRepository;
+import org.springframework.transaction.annotation.Transactional;
 
+import javax.persistence.EntityNotFoundException;
 import java.util.List;
 import java.util.Optional;
 
@@ -55,11 +57,11 @@ public abstract class AbstractCatalogService<T extends AbstractCatalog> implemen
     }
 
     @Override
-    public void setDeleted(Long id) {
-        if (getEntityRepository().findById(id).isPresent()) {
-            T entity = getEntityRepository().findById(id).get();
-            entity.setDeleted(true);
-            getEntityRepository().save(entity);
-        }
+    @Transactional
+    public void setDeleted(Long id, boolean isDeleted) throws EntityNotFoundException {
+        CatalogRepository<T> repository = getEntityRepository();
+        T entity = repository.getById(id);
+        entity.setDeleted(isDeleted);
+        repository.save(entity);
     }
 }

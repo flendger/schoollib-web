@@ -44,7 +44,7 @@ public class OwnerController {
 
     @GetMapping(value = "/delete/{id}")
     public String deleteOwner(@PathVariable Long id) {
-        ownerService.setDeleted(id);
+        ownerService.setDeleted(id, true);
         return "redirect:/owner";
     }
 }
