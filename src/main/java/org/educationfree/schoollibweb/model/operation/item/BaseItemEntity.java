@@ -15,7 +15,7 @@ public abstract class BaseItemEntity<T extends AbstractOperation> {
     @Column(name = "id")
     private Long id;
 
-    @Column(name = "row")
+    @Column(name = "row_num")
     private int row;
 
     @ManyToOne
