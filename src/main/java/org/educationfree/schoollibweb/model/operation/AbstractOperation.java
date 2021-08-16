@@ -4,19 +4,27 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.educationfree.schoollibweb.model.BaseEntity;
+import org.educationfree.schoollibweb.model.operation.item.BaseItemEntity;
+import org.educationfree.schoollibweb.model.operation.item.InventionItem;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.MappedSuperclass;
+import javax.persistence.OneToMany;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @MappedSuperclass
 @Getter
 @Setter
 @NoArgsConstructor
-public abstract class AbstractOperation extends BaseEntity {
+public abstract class AbstractOperation<I extends BaseItemEntity<?>> extends BaseEntity {
     @Column(name = "doc_num")
-    private Integer docNumber;
+    protected Integer docNumber;
 
     @Column(name = "doc_date")
-    private LocalDateTime docDate;
+    protected LocalDateTime docDate;
+
+    @OneToMany(mappedBy = "document", cascade = CascadeType.REMOVE, orphanRemoval = true)
+    protected List<I> items;
 }

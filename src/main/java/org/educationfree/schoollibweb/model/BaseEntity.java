@@ -26,11 +26,11 @@ public abstract class BaseEntity {
 
     @Column(name = "created_at")
     @CreationTimestamp
-    private LocalDateTime createdAt;
+    protected LocalDateTime createdAt;
 
     @Column(name = "updated_at")
     @UpdateTimestamp
-    private LocalDateTime updatedAt;
+    protected LocalDateTime updatedAt;
 
     @Override
     public boolean equals(Object o) {

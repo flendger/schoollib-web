@@ -7,6 +7,6 @@ import org.springframework.data.repository.NoRepositoryBean;
 import java.util.Optional;
 
 @NoRepositoryBean
-public interface OperationRepository<T extends AbstractOperation> extends EntityRepository<T> {
+public interface OperationRepository<T extends AbstractOperation<?>> extends EntityRepository<T> {
     Optional<T> findTopByOrderByDocNumberDesc();
 }

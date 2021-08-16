@@ -7,6 +7,7 @@ public interface OperationService<T> {
     List<T> findAll();
     List<T> findAllByIsDeletedFalse();
     Optional<T> findById(Long id);
+    Optional<T> findByIdWithItems(Long id);
     T save(T entity);
     void delete(T entity);
     void deleteById(Long id);
