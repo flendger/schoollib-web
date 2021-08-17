@@ -2,6 +2,7 @@ package org.educationfree.schoollibweb.controller;
 
 
 import lombok.RequiredArgsConstructor;
+import org.educationfree.schoollibweb.dto.SubjectDto;
 import org.educationfree.schoollibweb.model.catalog.Subject;
 import org.educationfree.schoollibweb.service.catalog.CatalogService;
 import org.springframework.stereotype.Controller;
@@ -15,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/subject")
 @RequiredArgsConstructor
 public class SubjectController {
-    private final CatalogService<Subject> subjectService;
+    private final CatalogService<Subject, SubjectDto> subjectService;
 
     @GetMapping
     public String showSubjectList(Model model) {
@@ -30,7 +31,7 @@ public class SubjectController {
     }
 
     @PostMapping
-    public String updateSubject(Subject subject) {
+    public String updateSubject(SubjectDto subject) {
         subjectService.save(subject);
 
         return "redirect:/subject";
@@ -38,7 +39,7 @@ public class SubjectController {
 
     @GetMapping("/new")
     public String addSubject(Model model) {
-        Subject subject = new Subject();
+        SubjectDto subject = new SubjectDto();
         model.addAttribute("subject", subject);
         return "subject_form";
     }

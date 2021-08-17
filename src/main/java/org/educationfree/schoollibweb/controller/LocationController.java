@@ -1,6 +1,9 @@
 package org.educationfree.schoollibweb.controller;
 
 import lombok.RequiredArgsConstructor;
+import org.educationfree.schoollibweb.dto.LocationDto;
+import org.educationfree.schoollibweb.dto.LocationTypeDto;
+import org.educationfree.schoollibweb.dto.PersonDto;
 import org.educationfree.schoollibweb.model.catalog.Location;
 import org.educationfree.schoollibweb.model.catalog.LocationType;
 import org.educationfree.schoollibweb.model.catalog.Person;
@@ -16,9 +19,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/location")
 @RequiredArgsConstructor
 public class LocationController {
-    private final CatalogService<Location> locationService;
-    private final CatalogService<LocationType> locationTypeService;
-    private final CatalogService<Person> personService;
+    private final CatalogService<Location, LocationDto> locationService;
+    private final CatalogService<LocationType, LocationTypeDto> locationTypeService;
+    private final CatalogService<Person, PersonDto> personService;
 
     @GetMapping
     public String showLocationList(Model model) {
@@ -35,14 +38,14 @@ public class LocationController {
     }
 
     @PostMapping
-    public String updateLocation(Location location) {
+    public String updateLocation(LocationDto location) {
         locationService.save(location);
         return "redirect:/location";
     }
 
     @GetMapping("/new")
     public String addLocation(Model model) {
-        Location location = new Location();
+        LocationDto location = new LocationDto();
         model.addAttribute("location", location);
         model.addAttribute("types", locationTypeService.findAll());
         model.addAttribute("persons", personService.findAll());

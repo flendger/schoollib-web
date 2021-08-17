@@ -1,6 +1,10 @@
 package org.educationfree.schoollibweb.controller;
 
 import lombok.RequiredArgsConstructor;
+import org.educationfree.schoollibweb.dto.BookDto;
+import org.educationfree.schoollibweb.dto.BookTypeDto;
+import org.educationfree.schoollibweb.dto.OwnerDto;
+import org.educationfree.schoollibweb.dto.PublisherDto;
 import org.educationfree.schoollibweb.model.catalog.Book;
 import org.educationfree.schoollibweb.model.catalog.BookType;
 import org.educationfree.schoollibweb.model.catalog.Owner;
@@ -17,10 +21,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/book")
 @RequiredArgsConstructor
 public class BookController {
-    private final CatalogService<Book> bookService;
-    private final CatalogService<BookType> bookTypeService;
-    private final CatalogService<Publisher> publisherService;
-    private final CatalogService<Owner> ownerService;
+    private final CatalogService<Book, BookDto> bookService;
+    private final CatalogService<BookType, BookTypeDto> bookTypeService;
+    private final CatalogService<Publisher, PublisherDto> publisherService;
+    private final CatalogService<Owner, OwnerDto> ownerService;
 
     @GetMapping
     public String showBookList(Model model) {
@@ -38,14 +42,14 @@ public class BookController {
     }
 
     @PostMapping
-    public String updateBook(Book book) {
+    public String updateBook(BookDto book) {
         bookService.save(book);
         return "redirect:/book";
     }
 
     @GetMapping("/new")
     public String addBook(Model model) {
-        Book book = new Book();
+        BookDto book = new BookDto();
         model.addAttribute("book", book);
         model.addAttribute("bookTypes", bookTypeService.findAll());
         model.addAttribute("publishers", publisherService.findAll());

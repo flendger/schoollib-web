@@ -1,5 +1,6 @@
 package org.educationfree.schoollibweb.service.catalog;
 
+import org.educationfree.schoollibweb.dto.BookTypeDto;
 import org.educationfree.schoollibweb.model.catalog.BookType;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +15,7 @@ import static org.junit.jupiter.api.Assertions.*;
 @ActiveProfiles("dev")
 class AbstractCatalogServiceTest {
     @Autowired
-    private CatalogService<BookType> catalogService;
+    private CatalogService<BookType, BookTypeDto> catalogService;
 
     @Test
     void setDeleted() {
