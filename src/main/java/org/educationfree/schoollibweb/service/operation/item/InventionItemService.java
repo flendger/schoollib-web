@@ -46,10 +46,21 @@ public class InventionItemService {
         return 1;
     }
 
-    public InventionItem getNewItem(Invention document) {
+    public InventionItem getNewItem(Long id) {
         InventionItem item = new InventionItem();
+        Invention document = new Invention();
+
+        document.setId(id);
         item.setDocument(document);
 
         return item;
+    }
+
+    public InventionItem findById(Long id) {
+        return inventionItemRepository.getById(id);
+    }
+
+    public void delete(Long id) {
+        inventionItemRepository.deleteById(id);
     }
 }
