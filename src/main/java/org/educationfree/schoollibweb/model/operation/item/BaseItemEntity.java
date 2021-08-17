@@ -1,43 +1,33 @@
-package org.educationfree.schoollibweb.model;
+package org.educationfree.schoollibweb.model.operation.item;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.UpdateTimestamp;
+import org.educationfree.schoollibweb.model.operation.AbstractOperation;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
 
+@MappedSuperclass
 @Getter
 @Setter
-@MappedSuperclass
-@AllArgsConstructor
-@NoArgsConstructor
-public abstract class BaseEntity {
+public abstract class BaseItemEntity<T extends AbstractOperation<?>> {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     protected Long id;
 
-    @Column(name = "is_deleted")
-    protected boolean isDeleted;
+    @Column(name = "row_num")
+    protected Integer row;
 
-    @Column(name = "created_at")
-    @CreationTimestamp
-    protected LocalDateTime createdAt;
-
-    @Column(name = "updated_at")
-    @UpdateTimestamp
-    protected LocalDateTime updatedAt;
+    @ManyToOne
+    @JoinColumn(name = "doc_id")
+    protected T document;
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        BaseEntity that = (BaseEntity) o;
+        BaseItemEntity<?> that = (BaseItemEntity<?>) o;
 
         return id.equals(that.id);
     }

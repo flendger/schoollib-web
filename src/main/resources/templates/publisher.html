@@ -62,12 +62,14 @@
                                             <tr>
                                                 <th>Код</th>
                                                 <th>Наименование</th>
+                                                <th></th>
                                             </tr>
                                             </thead>
                                             <!--/*@thymesVar id="person" type="org.educationfree.schoollibweb.model.catalog.Subject"*/-->
                                             <tr th:each="publisher : ${publishers}">
                                                 <th><a th:href="@{'/publisher/' + ${publisher.id}}" th:text="${publisher.code}"></a></th>
                                                 <th><a th:href="@{'/publisher/' + ${publisher.id}}" th:text="${publisher.name}"></a></th>
+                                                <th> <a class="btn btn-danger" th:href="@{'/publisher/delete/'+${publisher.id}}" >Удалить</a></th>
                                             </tr>
                                         </table>
                                     </div>

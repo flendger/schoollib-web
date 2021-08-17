@@ -42,4 +42,10 @@ public class SubjectController {
         model.addAttribute("subject", subject);
         return "subject_form";
     }
+
+    @GetMapping(value = "/delete/{id}") //TODO: DeleteMapping
+    public String deleteSubject(@PathVariable Long id) {
+        subjectService.setDeleted(id, true); //TODO: handle EntityNotFoundException
+        return "redirect:/subject";
+    }
 }

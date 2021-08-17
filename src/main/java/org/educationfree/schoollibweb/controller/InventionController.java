@@ -2,8 +2,8 @@ package org.educationfree.schoollibweb.controller;
 
 
 import lombok.RequiredArgsConstructor;
-import org.educationfree.schoollibweb.model.catalog.BookType;
-import org.educationfree.schoollibweb.service.catalog.CatalogService;
+import org.educationfree.schoollibweb.model.operation.Invention;
+import org.educationfree.schoollibweb.service.operation.OperationService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,40 +12,40 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/book_type")
+@RequestMapping("/invention")
 @RequiredArgsConstructor
-public class BookTypeController {
-    private final CatalogService<BookType> bookTypeService;
+public class InventionController {
+    private final OperationService<Invention> inventionService;
 
     @GetMapping
     public String showBookTypeList(Model model) {
-        model.addAttribute("book_types", bookTypeService.findAll());
-        return "book_type";
+        model.addAttribute("invention", inventionService.findAll());
+        return "invention";
     }
 
     @GetMapping(value = "/{id}")
     public String showBookTypeForm(Model model, @PathVariable Long id) {
-        model.addAttribute("book_type", bookTypeService.findById(id).orElseThrow());
-        return "book_type_form";
+        model.addAttribute("invention", inventionService.findById(id).orElseThrow());
+        return "invention_form";
     }
 
     @PostMapping
-    public String updateBookType(BookType bookType) {
-        bookTypeService.save(bookType);
+    public String updateBookType(Invention invention) {
+        inventionService.save(invention);
 
-        return "redirect:/book_type";
+        return "redirect:/invention";
     }
 
     @GetMapping("/new")
     public String addBookType(Model model) {
-        BookType bookType = new BookType();
-        model.addAttribute("book_type", bookType);
-        return "book_type_form";
+        Invention invention = new Invention();
+        model.addAttribute("invention", invention);
+        return "invention_form";
     }
 
     @GetMapping(value = "/delete/{id}") //TODO: DeleteMapping
     public String deleteBookType(@PathVariable Long id) {
-        bookTypeService.setDeleted(id, true); //TODO: handle EntityNotFoundException
-        return "redirect:/book_type";
+        inventionService.setDeleted(id, true); //TODO: handle EntityNotFoundException
+        return "redirect:/invention";
     }
 }

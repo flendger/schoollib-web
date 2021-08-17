@@ -7,6 +7,7 @@ import org.educationfree.schoollibweb.repository.catalog.CatalogRepository;
 import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.persistence.EntityNotFoundException;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -64,5 +65,14 @@ public abstract class AbstractCatalogService<T extends AbstractCatalog, D extend
     public Optional<D> findLast() {
         Optional<T> entity = getEntityRepository().findTopByOrderByCodeDesc();
         return entity.isEmpty() ? Optional.empty() : Optional.of(getMapper().entityToDto(entity.get()));
+    }
+
+    @Override
+    @Transactional
+    public void setDeleted(Long id, boolean isDeleted) throws EntityNotFoundException {
+        CatalogRepository<T> repository = getEntityRepository();
+        T entity = repository.getById(id);
+        entity.setDeleted(isDeleted);
+        repository.save(entity);
     }
 }

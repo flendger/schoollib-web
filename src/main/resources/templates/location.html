@@ -64,6 +64,7 @@
                                                 <th>Наименование</th>
                                                 <th>Тип хранения</th>
                                                 <th>Ответственный</th>
+                                                <th></th>
                                             </tr>
                                             </thead>
                                             <!--/*@thymesVar id="person" type="org.educationfree.schoollibweb.model.catalog.Location"*/-->
@@ -72,6 +73,7 @@
                                                 <th><a th:href="@{'/location/' + ${location.id}}" th:text="${location.name}"></a></th>
                                                 <th><a th:href="@{'/location/' + ${location.id}}" th:text="${location.locationType == null ? '-' : location.locationType.name}"></a></th>
                                                 <th><a th:href="@{'/location/' + ${location.id}}" th:text="${location.person == null ? '-' : location.person.name}"></a></th>
+                                                <th> <a class="btn btn-danger" th:href="@{'/location/delete/'+${location.id}}" >Удалить</a></th>
                                             </tr>
                                         </table>
                                     </div>

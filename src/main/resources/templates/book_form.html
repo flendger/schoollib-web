@@ -58,6 +58,7 @@
                                 <div class="row">
                                     <div class="col-sm-12 col-xs-12">
                                         <div class="form-wrap">
+                                            <!--/*@thymesVar id="book" type="org.educationfree.schoollibweb.model.catalog.Book"*/-->
                                             <form th:object="${book}" th:method="post" th:action="@{/book}"
                                                   enctype="multipart/form-data">
                                                 <input th:field="*{id}" type="hidden" class="form-control">
@@ -65,7 +66,8 @@
                                                 <div class="form-group">
                                                     <label class="control-label mb-10" for="code">Код</label>
                                                     <div class="input-group">
-                                                        <input id="code" type="text" class="form-control" placeholder="Код"
+                                                        <input id="code" type="text" class="form-control"
+                                                               placeholder="Код"
                                                                th:field="*{code}">
                                                         <div class="input-group-addon"></div>
                                                     </div>
@@ -80,18 +82,24 @@
                                                     </div>
                                                 </div>
 
-                                                <!--                                                <div class="form-group">-->
-                                                <!--                                                    <label class="control-label mb-10" >Тип книги</label>-->
-                                                <!--                                                    <div class="input-group">-->
-                                                <!--                                                        <input type="text" class="form-control" placeholder="Тип книги" th:field="*{bookType.name}">-->
-                                                <!--                                                        <div class="input-group-addon"></i></div>-->
-                                                <!--                                                    </div>-->
-                                                <!--                                                </div>-->
+                                                <div class="form-group">
+                                                    <label class="control-label mb-10">Тип книги</label>
+                                                    <div class="input-group">
+                                                        <select th:field="*{bookType.id}" class="form-control">
+                                                            <!--/*@thymesVar id="bookTypes" type="org.educationfree.schoollibweb.model.catalog.BookType"*/-->
+                                                            <option th:each="bookType : ${bookTypes}"
+                                                                    th:value="${bookType.id}"
+                                                                    th:text="${bookType.name}"></option>
+                                                        </select>
+                                                        <div class="input-group-addon"></i></div>
+                                                    </div>
+                                                </div>
 
                                                 <div class="form-group">
                                                     <label class="control-label mb-10" for="author">Автор</label>
                                                     <div class="input-group">
-                                                        <input id="author" type="text" class="form-control" placeholder="Автор"
+                                                        <input id="author" type="text" class="form-control"
+                                                               placeholder="Автор"
                                                                th:field="*{author}">
                                                         <div class="input-group-addon"></div>
                                                     </div>
@@ -100,33 +108,43 @@
                                                 <div class="form-group">
                                                     <label class="control-label mb-10" for="year">Год издания</label>
                                                     <div class="input-group">
-                                                        <input id="year" type="text" class="form-control" placeholder="Год"
+                                                        <input id="year" type="text" class="form-control"
+                                                               placeholder="Год"
                                                                th:field="*{year}">
                                                         <div class="input-group-addon"></div>
                                                     </div>
                                                 </div>
 
                                                 <div class="form-group">
-                                                    <label class="control-label mb-10" for="publisher">Издатель</label>
+                                                    <label class="control-label mb-10">Издатель</label>
                                                     <div class="input-group">
-                                                        <input id="publisher" type="text" class="form-control" placeholder="Издатель"
-                                                               th:field="*{publisher.name}">
+                                                        <select th:field="*{publisher.id}" class="form-control">
+                                                            <!--/*@thymesVar id="publishers" type="org.educationfree.schoollibweb.model.catalog.Publisher"*/-->
+                                                            <option th:each="publisher : ${publishers}"
+                                                                    th:value="${publisher.id}"
+                                                                    th:text="${publisher.name}"></option>
+                                                        </select>
                                                         <div class="input-group-addon"></div>
                                                     </div>
                                                 </div>
 
                                                 <div class="form-group">
-                                                    <label class="control-label mb-10" for="owner">Владелец</label>
+                                                    <label class="control-label mb-10">Владелец</label>
                                                     <div class="input-group">
-                                                        <input id="owner" type="text" class="form-control" placeholder="ФИО"
-                                                               th:field="*{owner.name}">
+                                                        <select th:field="*{owner.id}" class="form-control">
+                                                            <!--/*@thymesVar id="owners" type="org.educationfree.schoollibweb.model.catalog.Owner"*/-->
+                                                            <option th:each="owner : ${owners}"
+                                                                    th:value="${owner.id}"
+                                                                    th:text="${owner.name}"></option>
+                                                        </select>
                                                         <div class="input-group-addon"></div>
                                                     </div>
                                                 </div>
 
                                                 <div class="form-group">
                                                     <div class="input-group">
-                                                        <label class="control-label mb-10" for="ownership">Собственность</label>
+                                                        <label class="control-label mb-10"
+                                                               for="ownership">Собственность</label>
                                                         <input id="ownership" type="checkbox" th:field="*{ownership}">
                                                     </div>
                                                 </div>
@@ -134,7 +152,8 @@
                                                 <div class="form-group">
                                                     <label class="control-label mb-10" for="price">Цена</label>
                                                     <div class="input-group">
-                                                        <input id="price" type="text" class="form-control" placeholder="Цена"
+                                                        <input id="price" type="number" class="form-control"
+                                                               placeholder="Цена"
                                                                th:field="*{price}">
                                                         <div class="input-group-addon"></div>
                                                     </div>
