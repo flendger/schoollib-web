@@ -2,6 +2,7 @@ package org.educationfree.schoollibweb.controller;
 
 
 import lombok.RequiredArgsConstructor;
+import org.educationfree.schoollibweb.dto.PublisherDto;
 import org.educationfree.schoollibweb.model.catalog.Publisher;
 import org.educationfree.schoollibweb.service.catalog.CatalogService;
 import org.springframework.stereotype.Controller;
@@ -15,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/publisher")
 @RequiredArgsConstructor
 public class PublisherController {
-    private final CatalogService<Publisher> publisherService;
+    private final CatalogService<Publisher, PublisherDto> publisherService;
 
     @GetMapping
     public String showPublisherList(Model model) {
@@ -30,14 +31,14 @@ public class PublisherController {
     }
 
     @PostMapping
-    public String updatePublisher(Publisher publisher) {
+    public String updatePublisher(PublisherDto publisher) {
         publisherService.save(publisher);
         return "redirect:/publisher";
     }
 
     @GetMapping("/new")
     public String addPublisher(Model model) {
-        Publisher publisher = new Publisher();
+        PublisherDto publisher = new PublisherDto();
         model.addAttribute("publisher", publisher);
         return "publisher_form";
     }

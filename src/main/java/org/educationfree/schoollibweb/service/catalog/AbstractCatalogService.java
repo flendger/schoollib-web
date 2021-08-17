@@ -13,7 +13,7 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 
-public abstract class AbstractCatalogService<T extends AbstractCatalog, D extends AbstractCatalogDto> implements CatalogService<D,T> {
+public abstract class AbstractCatalogService<T extends AbstractCatalog, D extends AbstractCatalogDto> implements CatalogService<T,D> {
 
     protected abstract CatalogRepository<T> getEntityRepository();
     protected abstract Mapper<T,D> getMapper();
@@ -38,7 +38,7 @@ public abstract class AbstractCatalogService<T extends AbstractCatalog, D extend
 
     @Override
     @Transactional(isolation = Isolation.SERIALIZABLE)
-    public D save(T entity) {
+    public D save(D entity) {
         if (entity.getId() == null && entity.getCode() == null) {
             D last = findLast().orElse(null);
             if (last == null) {
@@ -48,7 +48,7 @@ public abstract class AbstractCatalogService<T extends AbstractCatalog, D extend
                 entity.setCode(last.getCode() + 1);
             }
         }
-        return getMapper().entityToDto(getEntityRepository().save(entity));
+        return getMapper().entityToDto(getEntityRepository().save(getMapper().dtoToEntity(entity)));
     }
 
     @Override

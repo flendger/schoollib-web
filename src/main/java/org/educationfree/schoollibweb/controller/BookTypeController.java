@@ -2,6 +2,7 @@ package org.educationfree.schoollibweb.controller;
 
 
 import lombok.RequiredArgsConstructor;
+import org.educationfree.schoollibweb.dto.BookTypeDto;
 import org.educationfree.schoollibweb.model.catalog.BookType;
 import org.educationfree.schoollibweb.service.catalog.CatalogService;
 import org.springframework.stereotype.Controller;
@@ -15,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/book_type")
 @RequiredArgsConstructor
 public class BookTypeController {
-    private final CatalogService<BookType> bookTypeService;
+    private final CatalogService<BookType, BookTypeDto> bookTypeService;
 
     @GetMapping
     public String showBookTypeList(Model model) {
@@ -30,7 +31,7 @@ public class BookTypeController {
     }
 
     @PostMapping
-    public String updateBookType(BookType bookType) {
+    public String updateBookType(BookTypeDto bookType) {
         bookTypeService.save(bookType);
 
         return "redirect:/book_type";
@@ -38,7 +39,7 @@ public class BookTypeController {
 
     @GetMapping("/new")
     public String addBookType(Model model) {
-        BookType bookType = new BookType();
+        BookTypeDto bookType = new BookTypeDto();
         model.addAttribute("book_type", bookType);
         return "book_type_form";
     }

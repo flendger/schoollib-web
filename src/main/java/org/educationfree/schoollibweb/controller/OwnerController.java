@@ -2,6 +2,7 @@ package org.educationfree.schoollibweb.controller;
 
 
 import lombok.RequiredArgsConstructor;
+import org.educationfree.schoollibweb.dto.OwnerDto;
 import org.educationfree.schoollibweb.model.catalog.Owner;
 import org.educationfree.schoollibweb.service.catalog.CatalogService;
 import org.springframework.stereotype.Controller;
@@ -15,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/owner")
 @RequiredArgsConstructor
 public class OwnerController {
-    private final CatalogService<Owner> ownerService;
+    private final CatalogService<Owner, OwnerDto> ownerService;
 
     @GetMapping
     public String showOwnerList(Model model) {
@@ -30,14 +31,14 @@ public class OwnerController {
     }
 
     @PostMapping
-    public String updateOwner(Owner owner) {
+    public String updateOwner(OwnerDto owner) {
         ownerService.save(owner);
         return "redirect:/owner";
     }
 
     @GetMapping("/new")
     public String addOwner(Model model) {
-        Owner owner = new Owner();
+        OwnerDto owner = new OwnerDto();
         model.addAttribute("owner", owner);
         return "owner_form";
     }
