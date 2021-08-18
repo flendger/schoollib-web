@@ -19,19 +19,19 @@ void init(){
     modelMapper.addMappings(new PropertyMap<Book, BookDto>() {
         @Override
         protected void configure() {
-            when(ctx -> ctx.getSource() == null ).skip(source.getBookType(),destination.getBookTypeDto());
-            when(ctx -> ctx.getSource() == null ).skip(source.getOwner(),destination.getOwnerDto());
-            when(ctx -> ctx.getSource() == null ).skip(source.getPublisher(),destination.getPublisherDto());
-            when(ctx -> ctx.getSource() == null ).skip(source.getSubject(),destination.getSubjectDto());
+            when(ctx -> ctx.getSource() == null ).skip(source.getBookType(),destination.getBookType());
+            when(ctx -> ctx.getSource() == null ).skip(source.getOwner(),destination.getOwner());
+            when(ctx -> ctx.getSource() == null ).skip(source.getPublisher(),destination.getPublisher());
+            when(ctx -> ctx.getSource() == null ).skip(source.getSubject(),destination.getSubject());
         }
     });
     modelMapper.addMappings(new PropertyMap<BookDto, Book>() {
         @Override
         protected void configure() {
-            when(ctx -> ctx.getSource() == null ).skip(source.getBookTypeDto(),destination.getBookType());
-            when(ctx -> ctx.getSource() == null ).skip(source.getOwnerDto(),destination.getOwner());
-            when(ctx -> ctx.getSource() == null ).skip(source.getPublisherDto(),destination.getPublisher());
-            when(ctx -> ctx.getSource() == null ).skip(source.getSubjectDto(),destination.getSubject());
+            when(ctx -> ctx.getSource() == null ).skip(source.getBookType(),destination.getBookType());
+            when(ctx -> ctx.getSource() == null ).skip(source.getOwner(),destination.getOwner());
+            when(ctx -> ctx.getSource() == null ).skip(source.getPublisher(),destination.getPublisher());
+            when(ctx -> ctx.getSource() == null ).skip(source.getSubject(),destination.getSubject());
         }
     });
 }

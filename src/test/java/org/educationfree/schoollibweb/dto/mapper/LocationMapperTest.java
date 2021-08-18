@@ -23,15 +23,15 @@ class LocationMapperTest {
         modelMapper.addMappings(new PropertyMap<Location, LocationDto>() {
             @Override
             protected void configure() {
-                when(ctx -> ctx.getSource() == null ).skip(source.getLocationType(),destination.getLocationTypeDto());
-                when(ctx -> ctx.getSource() == null ).skip(source.getPerson(),destination.getPersonDto());
+                when(ctx -> ctx.getSource() == null ).skip(source.getLocationType(),destination.getLocationType());
+                when(ctx -> ctx.getSource() == null ).skip(source.getPerson(),destination.getPerson());
             }
         });
         modelMapper.addMappings(new PropertyMap<LocationDto, Location>() {
             @Override
             protected void configure() {
-                when(ctx -> ctx.getSource() == null ).skip(source.getLocationTypeDto(),destination.getLocationType());
-                when(ctx -> ctx.getSource() == null ).skip(source.getPersonDto(),destination.getPerson());
+                when(ctx -> ctx.getSource() == null ).skip(source.getLocationType(),destination.getLocationType());
+                when(ctx -> ctx.getSource() == null ).skip(source.getPerson(),destination.getPerson());
             }
         });
     }

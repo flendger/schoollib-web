@@ -8,13 +8,13 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 public class BookDto extends AbstractCatalogDto {
-    private BookTypeDto bookTypeDto;
+    private BookTypeDto bookType;
 
-    private SubjectDto subjectDto;
+    private SubjectDto subject;
 
-    private PublisherDto publisherDto;
+    private PublisherDto publisher;
 
-    private OwnerDto ownerDto;
+    private OwnerDto owner;
 
     private String author;
 
@@ -43,10 +43,10 @@ public class BookDto extends AbstractCatalogDto {
                    boolean ownership,
                    double price) {
         super(id, isDeleted, code, name);
-        this.bookTypeDto = bookTypeDto;
-        this.subjectDto = subjectDto;
-        this.publisherDto = publisherDto;
-        this.ownerDto = ownerDto;
+        this.bookType = bookTypeDto;
+        this.subject = subjectDto;
+        this.publisher = publisherDto;
+        this.owner = ownerDto;
         this.author = author;
         this.classFrom = classFrom;
         this.classTo = classTo;

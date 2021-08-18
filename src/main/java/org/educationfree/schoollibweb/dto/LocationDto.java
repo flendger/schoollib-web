@@ -8,13 +8,12 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 public class LocationDto extends AbstractCatalogDto {
-    private LocationTypeDto locationTypeDto;
-
-    private PersonDto personDto;
+    private LocationTypeDto locationType;
+    private PersonDto person;
 
     public LocationDto(Long id, boolean isDeleted, Integer code, String name, LocationTypeDto locationTypeDto, PersonDto personDto) {
         super(id, isDeleted, code, name);
-        this.locationTypeDto = locationTypeDto;
-        this.personDto = personDto;
+        this.locationType = locationTypeDto;
+        this.person = personDto;
     }
 }
