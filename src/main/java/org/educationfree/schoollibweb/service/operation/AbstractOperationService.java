@@ -7,6 +7,7 @@ import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityNotFoundException;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -56,6 +57,9 @@ public abstract class AbstractOperationService<T extends AbstractOperation<?>> i
             } else {
                 entity.setDocNumber(last.getDocNumber() + 1);
             }
+        }
+        if (entity.getDocDate() == null) {
+            entity.setDocDate(LocalDateTime.now());
         }
         return getEntityRepository().save(entity);
     }
