@@ -19,7 +19,7 @@ public class ReceiptFromPublisherItemService extends AbstractOperationItemServic
     }
 
     @Override
-    public ReceiptFromPublisherItem getNewItem(Long documentId) {
+    public ReceiptFromPublisherItem newInstance(Long documentId) {
         ReceiptFromPublisherItem item = new ReceiptFromPublisherItem();
         item.setDocument(operationService.getById(documentId));
         return item;

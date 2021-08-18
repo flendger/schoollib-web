@@ -10,5 +10,5 @@ public interface OperationItemService<I extends BaseItemEntity<?>> {
     List<I> findAllByDocumentId(Long documentId);
     void save(I item);
     int getNewRowNum(Long documentId);
-    I getNewItem(Long documentId);
+    I newInstance(Long documentId);
 }

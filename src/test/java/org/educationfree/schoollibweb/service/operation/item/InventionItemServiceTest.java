@@ -30,7 +30,7 @@ class InventionItemServiceTest {
     @Test
     @Transactional
     void save() {
-        InventionItem newItem = inventionItemService.getNewItem(1L);
+        InventionItem newItem = inventionItemService.newInstance(1L);
 
         Book book = new Book();
         book.setId(66L);

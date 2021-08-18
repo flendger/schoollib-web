@@ -18,7 +18,7 @@ public class InventionItemService extends AbstractOperationItemService<Invention
         return inventionItemRepository;
     }
 
-    public InventionItem getNewItem(Long documentId) {
+    public InventionItem newInstance(Long documentId) {
         InventionItem item = new InventionItem();
         item.setDocument(operationService.getById(documentId));
 
