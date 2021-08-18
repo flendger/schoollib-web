@@ -30,6 +30,11 @@ public abstract class AbstractOperationService<T extends AbstractOperation<?>> i
     }
 
     @Override
+    public T getById(Long id) {
+        return getEntityRepository().getById(id);
+    }
+
+    @Override
     @Transactional
     public Optional<T> findByIdWithItems(Long id) {
         Optional<T> docOptional = getEntityRepository().findById(id);

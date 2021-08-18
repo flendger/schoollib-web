@@ -7,8 +7,8 @@ import java.util.List;
 import java.util.Optional;
 
 @NoRepositoryBean
-public interface OperationItemRepository<I, T> extends JpaRepository<I, Long> {
-    Optional<I> findTopByDocumentOrderByRowDesc(T document);
+public interface OperationItemRepository<I> extends JpaRepository<I, Long> {
+    Optional<I> findTopByDocumentIdOrderByRowDesc(Long documentId);
 
-    List<I> findAllByDocument(T document);
+    List<I> findAllByDocumentId(Long documentId);
 }

@@ -1,6 +1,5 @@
 package org.educationfree.schoollibweb.service.operation.item;
 
-import org.educationfree.schoollibweb.model.operation.AbstractOperation;
 import org.educationfree.schoollibweb.model.operation.item.BaseItemEntity;
 import org.educationfree.schoollibweb.repository.operation.model.item.OperationItemRepository;
 import org.springframework.transaction.annotation.Isolation;
@@ -9,17 +8,17 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 import java.util.Optional;
 
-public abstract class AbstractOperationItemService<I extends BaseItemEntity<T>, T extends AbstractOperation<I>> implements OperationItemService<I, T> {
-    protected abstract OperationItemRepository<I, T> getEntityRepository();
+public abstract class AbstractOperationItemService<I extends BaseItemEntity<?>> implements OperationItemService<I> {
+    protected abstract OperationItemRepository<I> getEntityRepository();
 
     @Override
-    public Optional<I> findLast(T document) {
-        return getEntityRepository().findTopByDocumentOrderByRowDesc(document);
+    public Optional<I> findLast(Long documentId) {
+        return getEntityRepository().findTopByDocumentIdOrderByRowDesc(documentId);
     }
 
     @Override
-    public List<I> findAllByDocument(T document) {
-        return getEntityRepository().findAllByDocument(document);
+    public List<I> findAllByDocumentId(Long documentId) {
+        return getEntityRepository().findAllByDocumentId(documentId);
     }
 
     @Override
@@ -30,15 +29,15 @@ public abstract class AbstractOperationItemService<I extends BaseItemEntity<T>, 
         }
 
         if (item.getRow() == null) {
-            item.setRow(getNewRowNum(item.getDocument()));
+            item.setRow(getNewRowNum(item.getDocument().getId()));
         }
 
         getEntityRepository().save(item);
     }
 
     @Override
-    public int getNewRowNum(T document) {
-        Optional<I> lastItemOptional = findLast(document);
+    public int getNewRowNum(Long documentId) {
+        Optional<I> lastItemOptional = findLast(documentId);
         if (lastItemOptional.isPresent()) {
             I lastItem = lastItemOptional.get();
             return lastItem.getRow() + 1;
