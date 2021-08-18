@@ -1,7 +1,6 @@
 package org.educationfree.schoollibweb.service.operation.item;
 
 import org.educationfree.schoollibweb.model.catalog.Book;
-import org.educationfree.schoollibweb.model.operation.Invention;
 import org.educationfree.schoollibweb.model.operation.item.InventionItem;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,7 +8,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.transaction.annotation.Transactional;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 @SpringBootTest
 @ActiveProfiles("dev")
@@ -19,25 +19,18 @@ class InventionItemServiceTest {
 
     @Test
     void findLast() {
-        Invention invention = new Invention();
-        invention.setId(1L);
-        assertDoesNotThrow(() -> inventionItemService.findLast(invention));
+        assertDoesNotThrow(() -> inventionItemService.findLast(1L));
     }
 
     @Test
     void findAllByDocument() {
-        Invention invention = new Invention();
-        invention.setId(1L);
-        assertDoesNotThrow(() -> inventionItemService.findAllByDocument(invention));
+        assertDoesNotThrow(() -> inventionItemService.findAllByDocumentId(1L));
     }
 
     @Test
     @Transactional
     void save() {
-        Invention invention = new Invention();
-        invention.setId(1L);
-
-        InventionItem newItem = inventionItemService.getNewItem(invention);
+        InventionItem newItem = inventionItemService.newInstance(1L);
 
         Book book = new Book();
         book.setId(66L);
