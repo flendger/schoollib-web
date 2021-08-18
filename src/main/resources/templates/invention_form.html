@@ -62,27 +62,27 @@
                                             <form th:object="${invention}" th:method="post" th:action="@{/invention}">
                                                 <input type="hidden" th:field="*{id}">
                                                 <div class="form-group">
-                                                    <label class="control-label mb-10">Номер</label>
+                                                    <label class="control-label mb-10" for="docNumber">Номер</label>
                                                     <div class="input-group">
-                                                        <input type="text" class="form-control" placeholder="Номер"
+                                                        <input id="docNumber" type="text" class="form-control" placeholder="Номер"
                                                                th:field="*{docNumber}" readonly="readonly">
                                                         <div class="input-group-addon"></div>
                                                     </div>
                                                 </div>
 
                                                 <div class="form-group">
-                                                    <label class="control-label mb-10">Дата</label>
+                                                    <label class="control-label mb-10" for="docDate">Дата</label>
                                                     <div class="input-group">
-                                                        <input type="text" class="form-control"
+                                                        <input id="docDate" type="text" class="form-control"
                                                                placeholder="Дата" th:field="*{docDate}">
                                                         <div class="input-group-addon"></div>
                                                     </div>
                                                 </div>
 
                                                 <div class="form-group">
-                                                    <label class="control-label mb-10">Место хранения</label>
+                                                    <label class="control-label mb-10" for="location">Место хранения</label>
                                                     <div class="input-group">
-                                                        <select th:field="*{location}" class="form-control">
+                                                        <select id="location" th:field="*{location}" class="form-control">
                                                             <!--/*@thymesVar id="types" type="org.educationfree.schoollibweb.model.catalog.LocationType"*/-->
                                                             <option th:each="location : ${locations}"
                                                                     th:value="${location.id}"
@@ -108,18 +108,18 @@
                                                             <div class="panel-body">
                                                                 <div class="table-wrap">
                                                                     <div class="table-responsive">
-                                                                        <table id="datable_1"
+                                                                        <table id="items"
                                                                                class="table table-hover display  pb-30">
                                                                             <thead>
                                                                             <tr>
                                                                                 <th>Номер строки</th>
                                                                                 <th>Книга</th>
                                                                                 <th>Количество</th>
-                                                                                <th/>
+                                                                                <th></th>
                                                                             </tr>
                                                                             </thead>
-                                                                            <!--/*@thymesVar id="item" type="org.educationfree.schoollibweb.model.operation.item.InventionItem"*/-->
                                                                             <tr th:each="item : ${invention.items}">
+                                                                                <!--/*@thymesVar id="item" type="org.educationfree.schoollibweb.model.operation.item.InventionItem"*/-->
                                                                                 <th>
                                                                                     <a th:href="@{'/invention/item/' + ${item.id}}"
                                                                                        th:text="${item.row}"></a></th>
