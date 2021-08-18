@@ -39,7 +39,7 @@ public class InventionController {
     @PostMapping
     public String updateOrSaveInvention(Invention invention) {
         inventionService.save(invention);
-        return "redirect:/invention";
+        return "redirect:/invention/" + invention.getId();
     }
 
     @GetMapping("/new")
