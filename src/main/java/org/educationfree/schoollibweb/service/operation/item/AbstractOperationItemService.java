@@ -17,6 +17,11 @@ public abstract class AbstractOperationItemService<I extends BaseItemEntity<?>> 
     }
 
     @Override
+    public Optional<I> findById(Long id) {
+        return getEntityRepository().findById(id);
+    }
+
+    @Override
     public List<I> findAllByDocumentId(Long documentId) {
         return getEntityRepository().findAllByDocumentId(documentId);
     }
