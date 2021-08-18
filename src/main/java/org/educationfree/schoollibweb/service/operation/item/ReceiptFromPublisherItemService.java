@@ -21,7 +21,7 @@ public class ReceiptFromPublisherItemService extends AbstractOperationItemServic
     @Override
     public ReceiptFromPublisherItem newInstance(Long documentId) {
         ReceiptFromPublisherItem item = new ReceiptFromPublisherItem();
-        item.setDocument(operationService.getById(documentId));
+        item.setDocument(operationService.findById(documentId).orElseThrow()); //todo throw EntityNotFoundException or get doc_num for dto
         return item;
     }
 }
