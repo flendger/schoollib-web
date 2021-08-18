@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<html lang="ru" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
 
 <head>
     <meta charset="UTF-8"/>
@@ -40,7 +40,7 @@
                 <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
                     <ol class="breadcrumb">
                         <li><a th:href="@{/}">Главная</a></li>
-                        <li><a th:href="@{/location}">Инвентаризации</a></li>
+                        <li><a th:href="@{/invention}">Инвентаризации</a></li>
                         <li class="active"><span>Инвентаризация</span></li>
                     </ol>
                 </div>
@@ -101,7 +101,7 @@
                                                 <br>
                                             </form>
                                             <!-- Table -->
-                                            <div class="row">
+                                            <div th:unless="${invention.id == null}" class="row">
                                                 <div class="col-sm-12">
                                                     <div class="panel panel-default card-view">
                                                         <div class="panel-wrapper collapse in">
@@ -112,7 +112,7 @@
                                                                                class="table table-hover display  pb-30">
                                                                             <thead>
                                                                             <tr>
-                                                                                <th>Номер строки</th>
+                                                                                <th>№ строки</th>
                                                                                 <th>Книга</th>
                                                                                 <th>Количество</th>
                                                                                 <th></th>
@@ -143,8 +143,12 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="pb-5">
-                                                <a class="btn btn-success" th:href="@{/invention/item}">Добавить</a>
+                                            <div th:unless="${invention.id == null}" class="pb-5">
+                                                <form th:method="GET" th:action="@{/invention/item/new}">
+                                                    <input type="hidden" th:value="${invention.id}" name="document_id"/>
+                                                    <button type="submit" class="btn btn-success">Добавить</button>
+                                                </form>
+<!--                                                <a class="btn btn-success" th:href="@{/invention/item/new}">Добавить</a>-->
                                             </div>
                                         </div>
                                     </div>
