@@ -52,8 +52,17 @@ public abstract class AbstractOperationItemService<I extends BaseItemEntity<?>> 
     }
 
     @Override
+    @Transactional(isolation = Isolation.SERIALIZABLE)
     public void delete(Long id) {
-        getEntityRepository().deleteById(id);
+        OperationItemRepository<I> entityRepository = getEntityRepository();
+
+        I entity = entityRepository.getById(id);
+        int currentRow = entity.getRow();
+        Long documentId = entity.getDocument().getId();
+
+        entityRepository.deleteById(id);
+
+        renumberRows(documentId, currentRow);
     }
 
     @Override
