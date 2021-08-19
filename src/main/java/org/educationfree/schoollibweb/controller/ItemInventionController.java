@@ -37,9 +37,9 @@ public class ItemInventionController {
         return "invention_item";
     }
 
-//    @GetMapping("/delete")
-//    public String deleteItem(@PathVariable Long id){
-//        inventionItemService.delete(id);
-//        return "redirect:/invention";
-//    }
+    @GetMapping("/delete/{id}")
+    public String deleteItem(@PathVariable Long id, @RequestParam("documentId") Long documentId){ //TODO: change to delete mapping
+        inventionItemService.delete(id);
+        return "redirect:/invention/" + documentId;
+    }
 }
