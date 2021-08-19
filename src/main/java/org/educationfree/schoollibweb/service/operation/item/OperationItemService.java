@@ -12,4 +12,6 @@ public interface OperationItemService<I extends BaseItemEntity<?>> {
     void save(I item);
     int getNewRowNum(Long documentId);
     I newInstance(Long documentId);
+    void delete(Long id);
+    void renumberRows(Long documentId, int first);
 }

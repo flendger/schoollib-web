@@ -131,8 +131,11 @@
                                                                                     <a th:href="@{'/invention/item/' + ${item.id}}"
                                                                                        th:text="${item.quantity}"></a>
                                                                                 </th>
-                                                                                <th><a class="btn btn-danger"
-                                                                                       th:href="@{'/invention/item/delete/'+${item.id}}">Удалить</a>
+                                                                                <th>
+                                                                                    <form th:method="GET" th:action="@{/invention/item/delete/{id} (id = ${item.id})}">
+                                                                                        <input type="hidden" th:value="${invention.id}" name="document_id"/>
+                                                                                        <button type="submit" class="btn btn-danger">Удалить</button>
+                                                                                    </form>
                                                                                 </th>
                                                                             </tr>
                                                                         </table>
