@@ -49,4 +49,9 @@ public abstract class AbstractOperationItemService<I extends BaseItemEntity<?>> 
         }
         return 1;
     }
+
+    @Override
+    public void delete(Long id) {
+        getEntityRepository().deleteById(id);
+    }
 }
