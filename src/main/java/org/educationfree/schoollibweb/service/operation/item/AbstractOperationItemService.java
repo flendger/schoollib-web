@@ -7,6 +7,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public abstract class AbstractOperationItemService<I extends BaseItemEntity<?>> implements OperationItemService<I> {
     protected abstract OperationItemRepository<I> getEntityRepository();
@@ -23,7 +24,7 @@ public abstract class AbstractOperationItemService<I extends BaseItemEntity<?>> 
 
     @Override
     public List<I> findAllByDocumentId(Long documentId) {
-        return getEntityRepository().findAllByDocumentId(documentId);
+        return getEntityRepository().findAllByDocumentIdOrderByRow(documentId);
     }
 
     @Override
@@ -53,5 +54,24 @@ public abstract class AbstractOperationItemService<I extends BaseItemEntity<?>> 
     @Override
     public void delete(Long id) {
         getEntityRepository().deleteById(id);
+    }
+
+    @Override
+    @Transactional(isolation = Isolation.SERIALIZABLE)
+    public void renumberRows(Long documentId, int first) {
+        if (documentId == null) {
+            throw new IllegalArgumentException("documentId mustn't be null");
+        }
+        if (first < 1) {
+            throw new IllegalArgumentException("First row must be greater than 0");
+        }
+
+        OperationItemRepository<I> entityRepository = getEntityRepository();
+
+        List<I> items = entityRepository.findAllByDocumentIdAndRowGreaterThanEqualOrderByRow(documentId, first);
+        AtomicInteger counter = new AtomicInteger(first -1);
+        items.forEach(item -> item.setRow(counter.incrementAndGet()));
+
+        entityRepository.saveAll(items);
     }
 }

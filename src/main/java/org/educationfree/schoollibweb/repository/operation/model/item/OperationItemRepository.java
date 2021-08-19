@@ -10,7 +10,7 @@ import java.util.Optional;
 public interface OperationItemRepository<I> extends JpaRepository<I, Long> {
     Optional<I> findTopByDocumentIdOrderByRowDesc(Long documentId);
 
-    List<I> findAllByDocumentId(Long documentId);
+    List<I> findAllByDocumentIdOrderByRow(Long documentId);
 
     List<I> findAllByDocumentIdAndRowGreaterThanEqualOrderByRow(Long documentId, int first);
 }
