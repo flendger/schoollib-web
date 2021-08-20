@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 @Controller
 @RequestMapping("/invention/item")
 @RequiredArgsConstructor
-public class ItemInventionController {
+public class InventionItemController {
     private final OperationItemService<InventionItem> inventionItemService;
     private final CatalogService<Book, BookDto> bookService;
 
