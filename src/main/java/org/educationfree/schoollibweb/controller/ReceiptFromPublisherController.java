@@ -26,7 +26,7 @@ public class ReceiptFromPublisherController {
 
     @GetMapping
     public String showList(Model model) {
-        model.addAttribute("invention", entityService.findAll());
+        model.addAttribute("entities", entityService.findAll());
         return "receipt_fp";
     }
 
