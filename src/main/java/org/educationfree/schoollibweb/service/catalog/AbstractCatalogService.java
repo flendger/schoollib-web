@@ -4,6 +4,7 @@ import org.educationfree.schoollibweb.dto.AbstractCatalogDto;
 import org.educationfree.schoollibweb.dto.mapper.Mapper;
 import org.educationfree.schoollibweb.model.catalog.AbstractCatalog;
 import org.educationfree.schoollibweb.repository.catalog.CatalogRepository;
+import org.springframework.data.repository.query.Param;
 import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -29,6 +30,11 @@ public abstract class AbstractCatalogService<T extends AbstractCatalog, D extend
         return getEntityRepository().findAllByIsDeletedFalse()
                 .stream().map(t -> getMapper().entityToDto(t)).collect(Collectors.toList());
     }
+    @Override
+    public List<D> findByName(@Param("s") String s){
+        return getEntityRepository().findByName(s).stream().map(t -> getMapper().entityToDto(t)).collect(Collectors.toList());
+    }
+
 
     @Override
     public Optional<D> findById(Long id) {

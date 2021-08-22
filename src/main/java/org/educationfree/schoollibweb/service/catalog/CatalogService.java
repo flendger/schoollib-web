@@ -1,5 +1,7 @@
 package org.educationfree.schoollibweb.service.catalog;
 
+import org.springframework.data.repository.query.Param;
+
 import java.util.List;
 import java.util.Optional;
 
@@ -12,4 +14,7 @@ public interface CatalogService<T,D> {
     void deleteById(Long id);
     void setDeleted(Long id, boolean isDeleted);
     Optional<D> findLast();
+
+    List<D> findByName(@Param("t") String t);
+
 }

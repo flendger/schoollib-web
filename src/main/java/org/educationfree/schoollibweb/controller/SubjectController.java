@@ -7,10 +7,7 @@ import org.educationfree.schoollibweb.model.catalog.Subject;
 import org.educationfree.schoollibweb.service.catalog.CatalogService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequestMapping("/subject")
@@ -23,7 +20,11 @@ public class SubjectController {
         model.addAttribute("subjects", subjectService.findAll());
         return "subject";
     }
-
+    @GetMapping("/filter")
+    public String showSubjectList(Model model, @RequestParam(value = "name", required = false) String name) {
+        model.addAttribute("subjects", subjectService.findByName(name));
+        return "subject";
+    }
     @GetMapping(value = "/{id}")
     public String showSubjectForm(Model model, @PathVariable Long id) {
         model.addAttribute("subject", subjectService.findById(id).orElseThrow());
