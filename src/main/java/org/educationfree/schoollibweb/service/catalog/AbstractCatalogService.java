@@ -20,13 +20,15 @@ public abstract class AbstractCatalogService<T extends AbstractCatalog, D extend
 
     @Override
     public List<D> findAll() {
-        return getEntityRepository().findAll().stream().map(t -> getMapper().entityToDto(t)).collect(Collectors.toList());
+        return getEntityRepository().findAllByIsDeletedFalse()
+                .stream()
+                .map(t -> getMapper().entityToDto(t))
+                .collect(Collectors.toList());
     }
 
     @Override
-    public List<D> findAllByIsDeletedFalse() {
-
-        return getEntityRepository().findAllByIsDeletedFalse()
+    public List<D> findAllWithDeleted() {
+        return getEntityRepository().findAll()
                 .stream().map(t -> getMapper().entityToDto(t)).collect(Collectors.toList());
     }
 

@@ -5,7 +5,7 @@ import java.util.Optional;
 
 public interface CatalogService<T,D> {
     List<D> findAll();
-    List<D> findAllByIsDeletedFalse();
+    List<D> findAllWithDeleted();
     Optional<D> findById(Long id);
     D save(D entity);
     void delete(D dtoEntity);

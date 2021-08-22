@@ -17,12 +17,12 @@ public abstract class AbstractOperationService<T extends AbstractOperation<?>> i
 
     @Override
     public List<T> findAll() {
-        return getEntityRepository().findAll();
+        return getEntityRepository().findAllByIsDeletedFalse();
     }
 
     @Override
-    public List<T> findAllByIsDeletedFalse() {
-        return getEntityRepository().findAllByIsDeletedFalse();
+    public List<T> findAllWithDeleted() {
+        return getEntityRepository().findAll();
     }
 
     @Override

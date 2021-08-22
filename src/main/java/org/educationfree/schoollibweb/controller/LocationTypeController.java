@@ -19,7 +19,7 @@ public class LocationTypeController {
 
     @GetMapping
     public String showLocationTypeList(Model model) {
-        model.addAttribute("locationTypes", locationTypeService.findAllByIsDeletedFalse());
+        model.addAttribute("locationTypes", locationTypeService.findAll());
         return "location_type";
     }
 

@@ -5,7 +5,7 @@ import java.util.Optional;
 
 public interface OperationService<T> {
     List<T> findAll();
-    List<T> findAllByIsDeletedFalse();
+    List<T> findAllWithDeleted();
     Optional<T> findById(Long id);
     T getById(Long id);
     Optional<T> findByIdWithItems(Long id);
