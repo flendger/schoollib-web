@@ -33,15 +33,15 @@
             <!-- Title -->
             <div class="row heading-bg">
                 <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-                    <h5 class="txt-dark">Поступление от издательства</h5>
+                    <h5 class="txt-dark">Поступление от издательств</h5>
                 </div>
 
                 <!-- Breadcrumb -->
                 <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
                     <ol class="breadcrumb">
                         <li><a th:href="@{/}">Главная</a></li>
-                        <li><a th:href="@{/receipt_fp}">Поступления от издательства</a></li>
-                        <li class="active"><span>Поступление от издательства</span></li>
+                        <li><a th:href="@{/receipt_fp}">Поступления от издательств</a></li>
+                        <li class="active"><span>Поступление от издательств</span></li>
                     </ol>
                 </div>
                 <!-- /Breadcrumb -->
@@ -101,6 +101,15 @@
                                                                     th:value="${location.id}"
                                                                     th:text="${location.name}"></option>
                                                         </select>
+                                                        <div class="input-group-addon"></div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label class="control-label mb-10" for="comment">Комментарий</label>
+                                                    <div class="input-group">
+                                                        <input id="comment" type="text" class="form-control"
+                                                               placeholder="Комментарий" th:field="*{comment}">
                                                         <div class="input-group-addon"></div>
                                                     </div>
                                                 </div>
