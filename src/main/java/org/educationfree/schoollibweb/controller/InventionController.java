@@ -18,41 +18,40 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/invention")
 @RequiredArgsConstructor
 public class InventionController {
-    private final OperationService<Invention> inventionService;
+    private final OperationService<Invention> entityService;
     private final CatalogService<Location, LocationDto> locationService;
 
     @GetMapping
-    public String showInventionList(Model model) {
-        model.addAttribute("invention", inventionService.findAll());
+    public String showList(Model model) {
+        model.addAttribute("entities", entityService.findAll());
 
         return "invention";
     }
 
     @GetMapping(value = "/{id}")
-    public String showInvention(Model model, @PathVariable Long id) {
-        Invention invention = inventionService.findByIdWithItems(id).orElseThrow();
-        model.addAttribute("invention", invention);
+    public String show(Model model, @PathVariable Long id) {
+        Invention entityDto = entityService.findByIdWithItems(id).orElseThrow();
+        model.addAttribute("entity", entityDto);
         model.addAttribute("locations", locationService.findAll());
         return "invention_form";
     }
 
     @PostMapping
-    public String updateOrSaveInvention(Invention invention) {
-        inventionService.save(invention);
-        return "redirect:/invention/" + invention.getId();
+    public String save(Invention entityDto) {
+        entityService.save(entityDto);
+        return "redirect:/invention/" + entityDto.getId();
     }
 
     @GetMapping("/new")
-    public String addInvention(Model model) {
-        Invention invention = new Invention();
-        model.addAttribute("invention", invention);
+    public String add(Model model) {
+        model.addAttribute("entity", new Invention());
         model.addAttribute("locations", locationService.findAll());
         return "invention_form";
     }
 
     @GetMapping(value = "/delete/{id}") //TODO: DeleteMapping
-    public String deleteInvention(@PathVariable Long id) {
-        inventionService.setDeleted(id, true); //TODO: handle EntityNotFoundException
+    public String delete(@PathVariable Long id) {
+        entityService.setDeleted(id, true); //TODO: handle EntityNotFoundException
         return "redirect:/invention";
     }
 }
