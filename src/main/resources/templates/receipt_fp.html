@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <title>Библиотека</title>
+
+    <!--CSS-->
+    <div th:replace="~{css_style :: css_style(activeTab)}"></div>
+
+</head>
+
+<body>
+<!-- Preloader -->
+<div class="preloader-it">
+    <div class="la-anim-1"></div>
+</div>
+<!-- /Preloader -->
+<div class="wrapper theme-1-active pimary-color-red">
+    <!-- Top Menu Items -->
+    <nav th:replace="~{top_menu :: top_menu(activeTab)}"></nav>
+    <!-- /Top Menu Items -->
+
+    <!-- Left Sidebar Menu -->
+    <nav th:replace="~{left_sidebar_menu :: left_sidebar(activeTab)}"></nav>
+    <!-- /Left Sidebar Menu -->
+
+    <!-- Main Content -->
+    <div class="page-wrapper">
+        <div class="container-fluid">
+
+            <!-- Title -->
+            <div class="row heading-bg">
+                <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+                    <h5 class="txt-dark">Поступления от издательств</h5>
+                </div>
+                <!-- Breadcrumb -->
+                <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
+                    <ol class="breadcrumb">
+                        <li><a th:href="@{/}"><span>Главная</span></a></li>
+                        <li class="active"><span>Поступления от издательств</span></li>
+                    </ol>
+                </div>
+                <!-- /Breadcrumb -->
+            </div>
+            <!-- /Title -->
+
+            <div class="pb-5">
+                <a class="btn btn-success" th:href="@{/receipt_fp/new}">Добавить</a>
+            </div>
+            <!-- Table -->
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="panel panel-default card-view">
+                        <div class="panel-wrapper collapse in">
+                            <div class="panel-body">
+                                <div class="table-wrap">
+                                    <div class="table-responsive">
+                                        <table id="datable_1" class="table table-hover display  pb-30" >
+                                            <thead>
+                                            <tr>
+                                                <th>Номер</th>
+                                                <th>Дата</th>
+                                                <th>Издательство</th>
+                                                <th>Место хранения</th>
+                                                <th>Комментарий</th>
+                                                <th></th>
+                                            </tr>
+                                            </thead>
+                                            <tr th:each="entity : ${entities}">
+                                                <!--/*@thymesVar id="entity" type="org.educationfree.schoollibweb.model.operation.ReceiptFromPublisher"*/-->
+                                                <th><a th:href="@{'/receipt_fp/' + ${entity.id}}" th:text="${entity.docNumber}"></a></th>
+                                                <th><a th:href="@{'/receipt_fp/' + ${entity.id}}" th:text="${entity.docDate}"></a></th>
+                                                <th><a th:href="@{'/receipt_fp/' + ${entity.id}}" th:text="${entity.publisher == null ? '-' : entity.publisher.name}"></a></th>
+                                                <th><a th:href="@{'/receipt_fp/' + ${entity.id}}" th:text="${entity.location == null ? '-' : entity.location.name}"></a></th>
+                                                <th><a th:href="@{'/receipt_fp/' + ${entity.id}}" th:text="${entity.comment}"></a></th>
+                                                <th> <a class="btn btn-danger" th:href="@{'/receipt_fp/delete/'+${entity.id}}" >Удалить</a></th>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Footer -->
+        <footer th:replace="~{footer :: footer(activeTab)}"></footer>
+        <!-- /Footer -->
+
+    </div>
+    <!-- /Main Content -->
+
+</div>
+<!-- /#wrapper -->
+
+<!-- JavaScript -->
+<div th:replace="~{java_script :: script(activeTab)}"></div>
+
+</body>
+</html>

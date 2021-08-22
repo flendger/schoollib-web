@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html lang="ru">
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta charset="UTF-8"/>
@@ -34,29 +33,26 @@
             <!-- Title -->
             <div class="row heading-bg">
                 <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-                    <h5 class="txt-dark">Таблица</h5>
+                    <h5 class="txt-dark">Ответственные</h5>
                 </div>
                 <!-- Breadcrumb -->
                 <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
                     <ol class="breadcrumb">
-                        <li><a href="/"><span>Главная</span></a></li>
-                        <li class="active"><span>Таблица</span></li>
+                        <li><a th:href="@{/}"><span>Главная</span></a></li>
+                        <li class="active"><span>Ответственные</span></li>
                     </ol>
                 </div>
                 <!-- /Breadcrumb -->
             </div>
             <!-- /Title -->
 
+            <div class="pb-5">
+                <a class="btn btn-success" th:href="@{/person/new}">Добавить</a>
+            </div>
             <!-- Table -->
             <div class="row">
                 <div class="col-sm-12">
                     <div class="panel panel-default card-view">
-                        <div class="panel-heading">
-                            <div class="pull-left">
-                                <h6 class="panel-title txt-dark">Таблица</h6>
-                            </div>
-                            <div class="clearfix"></div>
-                        </div>
                         <div class="panel-wrapper collapse in">
                             <div class="panel-body">
                                 <div class="table-wrap">
@@ -64,24 +60,25 @@
                                         <table id="datable_1" class="table table-hover display  pb-30" >
                                             <thead>
                                             <tr>
-                                                <th>ID</th>
-                                                <th>Name</th>
+                                                <th>Код</th>
+                                                <th>ФИО</th>
                                                 <th>Email</th>
                                                 <th>Телефон</th>
                                                 <th>Адрес</th>
                                                 <th>Комментарий</th>
-                                                <th>Операции</th>
+                                                <th></th>
                                             </tr>
                                             </thead>
                                             <!--/*@thymesVar id="person" type="org.educationfree.schoollibweb.model.catalog.Person"*/-->
                                             <tr th:each="person : ${persons}">
-                                                <th th:text="${person.id}"></th>
-                                                <th th:text="${person.name}"></th>
-                                                <th th:text="${person.email}"></th>
-                                                <th th:text="${person.telephone}"></th>
-                                                <th th:text="${person.address}"></th>
-                                                <th th:text="${person.comment}"></th>
-                                                <th> <a th:href="@{'/person-edit/' + ${person.id}}" class="jsgrid-button jsgrid-edit-button">Изменить</a><br></th>
+                                                <th><a th:href="@{'/person/' + ${person.id}}" th:text="${person.code}"></a></th>
+                                                <th><a th:href="@{'/person/' + ${person.id}}" th:text="${person.name}"></a></th>
+                                                <th><a th:href="@{'/person/' + ${person.id}}" th:text="${person.email}"></a></th>
+                                                <th><a th:href="@{'/person/' + ${person.id}}" th:text="${person.telephone}"></a></th>
+                                                <th><a th:href="@{'/person/' + ${person.id}}" th:text="${person.address}"></a></th>
+                                                <th><a th:href="@{'/person/' + ${person.id}}" th:text="${person.comment}"></a></th>
+                                                <th> <a class="btn btn-danger" th:href="@{'/person/delete/'+${person.id}}" >Удалить</a></th>
+
                                             </tr>
                                         </table>
                                     </div>

@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html lang="ru">
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta charset="UTF-8"/>
@@ -34,14 +33,15 @@
             <!-- Title -->
             <div class="row heading-bg">
                 <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-                    <h5 class="txt-dark">Ответственные</h5>
+                    <h5 class="txt-dark">Место хранения</h5>
                 </div>
 
                 <!-- Breadcrumb -->
                 <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
                     <ol class="breadcrumb">
-                        <li><a href="/">Главная</a></li>
-                        <li class="active"><span>Ответственные</span></li>
+                        <li><a th:href="@{/}">Главная</a></li>
+                        <li><a th:href="@{/location}">Места хранения</a></li>
+                        <li class="active"><span>Место хранения</span></li>
                     </ol>
                 </div>
                 <!-- /Breadcrumb -->
@@ -53,64 +53,61 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="panel panel-default card-view">
-                        <div class="panel-heading">
-                            <div class="pull-left">
-                                <h6 class="panel-title txt-dark">Ответственные</h6>
-                            </div>
-                            <div class="clearfix"></div>
-                        </div>
                         <div class="panel-wrapper collapse in">
                             <div class="panel-body">
                                 <div class="row">
                                     <div class="col-sm-12 col-xs-12">
                                         <div class="form-wrap">
-                                            <form th:action="d" th:object="${person}" method="post"
+                                            <!--/*@thymesVar id="location" type="org.educationfree.schoollibweb.model.catalog.Location"*/-->
+                                            <form th:object="${location}" th:method="post" th:action="@{/location}"
                                                   enctype="multipart/form-data">
                                                 <input th:field="*{id}" type="hidden" class="form-control">
 
                                                 <div class="form-group">
-                                                    <label class="control-label mb-10" >ФИО</label>
+                                                    <label class="control-label mb-10" for="code">Код</label>
                                                     <div class="input-group">
-                                                        <input type="text" class="form-control" placeholder="Email" th:field="*{name}">
-                                                        <div class="input-group-addon"></i></div>
+                                                        <input id="code" type="text" class="form-control" placeholder="Код" th:field="*{code}" readonly="readonly">
+                                                        <div class="input-group-addon"></div>
                                                     </div>
                                                 </div>
 
                                                 <div class="form-group">
-                                                    <label class="control-label mb-10" >Email</label>
+                                                    <label class="control-label mb-10" for="name">Наименование</label>
                                                     <div class="input-group">
-                                                        <input type="email" class="form-control" placeholder="Email" th:field="*{email}">
-                                                        <div class="input-group-addon"></i></div>
+                                                        <input id="name" type="text" class="form-control" placeholder="Наименование" th:field="*{name}">
+                                                        <div class="input-group-addon"></div>
                                                     </div>
                                                 </div>
 
                                                 <div class="form-group">
-                                                    <label class="control-label mb-10" >Телефон</label>
+                                                    <label class="control-label mb-10">Тип</label>
                                                     <div class="input-group">
-                                                        <input type="number" class="form-control" placeholder="Address" th:field="*{telephone}">
-                                                        <div class="input-group-addon"></i></div>
+                                                        <select th:field="*{locationType.id}" class="form-control">
+                                                            <!--/*@thymesVar id="types" type="org.educationfree.schoollibweb.model.catalog.LocationType"*/-->
+                                                            <option th:each="type : ${types}"
+                                                                    th:value="${type.id}"
+                                                                    th:text="${type.name}"></option>
+                                                        </select>
+                                                        <div class="input-group-addon"></div>
                                                     </div>
                                                 </div>
 
                                                 <div class="form-group">
-                                                    <label class="control-label mb-10" >Адрес</label>
+                                                    <label class="control-label mb-10">ФИО</label>
                                                     <div class="input-group">
-                                                        <input type="text" class="form-control" placeholder="Address" th:field="*{address}">
-                                                        <div class="input-group-addon"></i></div>
-                                                    </div>
-                                                </div>
-
-                                                <div class="form-group">
-                                                    <label class="control-label mb-10" >Комментарий</label>
-                                                    <div class="input-group">
-                                                        <input type="text" class="form-control" placeholder="Comment" th:field="*{comment}">
-                                                        <div class="input-group-addon"></i></div>
+                                                        <select th:field="*{person.id}" class="form-control">
+                                                            <!--/*@thymesVar id="persons" type="org.educationfree.schoollibweb.model.catalog.Person"*/-->
+                                                            <option th:each="person : ${persons}"
+                                                                    th:value="${person.id}"
+                                                                    th:text="${person.name}"></option>
+                                                        </select>
+                                                        <div class="input-group-addon"></div>
                                                     </div>
                                                 </div>
 
                                                 <div class="form-group mb-0">
                                                     <button type="submit" class="btn btn-success  mr-10">Сохранить</button>
-                                                    <button type="submit" class="btn btn-default  ">Назад</button>
+                                                    <button type="button" class="btn btn-default" onclick="history.back();">Назад</button>
                                                 </div>
                                             </form>
                                         </div>

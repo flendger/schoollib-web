@@ -7,8 +7,8 @@ public enum Error {
     NOT_FOUND(404, "Not found!"),
     INTERNAL_SERVER_ERROR(500, "Internal server error!");
 
-    int errorCode;
-    String errorMessage;
+    final int errorCode;
+    final String errorMessage;
 
     Error(int errorCode, String errorMessage){
         this.errorCode = errorCode;

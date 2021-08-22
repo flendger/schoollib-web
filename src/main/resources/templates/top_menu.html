@@ -1,11 +1,11 @@
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
 
 <nav class="navbar navbar-inverse navbar-fixed-top" th:fragment="top_menu(activeTab)">
     <div class="mobile-only-brand pull-left">
         <div class="nav-header pull-left">
             <div class="logo-wrap">
-                <a href="/">
-                    <img class="brand-img" src="/static/dist/img/logo.png" alt="brand"/>
+                <a th:href="@{/}">
+                    <img class="brand-img" th:src="@{/static/dist/img/logo.png}" alt="brand"/>
                     <span class="brand-text">Библиотека</span>
                 </a>
             </div>
@@ -29,16 +29,15 @@
     <div id="mobile_only_nav" class="mobile-only-nav pull-right">
         <ul class="nav navbar-right top-nav pull-right">
             <li class="dropdown auth-drp">
-                <a href="#" class="dropdown-toggle pr-0" data-toggle="dropdown"><img src="/static/dist/img/user10.png"
-                                                                                     alt="user_auth"
+                <a th:href="@{#}" class="dropdown-toggle pr-0" data-toggle="dropdown"><img th:src="@{/static/dist/img/user1.png}" alt="user_auth"
                                                                                      class="user-auth-img img-circle" width="80" height="80"/><span
                         class="user-online-status"></span></a>
                 <ul class="dropdown-menu user-auth-dropdown" data-dropdown-in="flipInX" data-dropdown-out="flipOutX">
                     <li>
-                        <a href="/profile"><i class="zmdi zmdi-account"></i><span>Профиль</span></a>
+                        <a th:href="@{/profile}"><i class="zmdi zmdi-account"></i><span>Профиль</span></a>
                     </li>
                     <li>
-                        <a href="#"><i class="zmdi zmdi-power"></i><span>Выход</span></a>
+                        <a th:href="@{#}"><i class="zmdi zmdi-power"></i><span>Выход</span></a>
                     </li>
                 </ul>
             </li>
