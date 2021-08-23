@@ -1,10 +1,9 @@
 package org.educationfree.schoollibweb.service.authentication;
 
 import org.educationfree.schoollibweb.model.authentication.User;
-import org.springframework.security.core.userdetails.UserDetailsService;
 
-import java.util.List;
+import java.util.Optional;
 
-public interface UserService extends UserDetailsService {
-    User findByUserName(String username);
+public interface UserService {
+    Optional<User> findByUsername(String username);
 }
