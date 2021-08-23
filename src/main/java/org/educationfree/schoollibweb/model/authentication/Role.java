@@ -1,16 +1,17 @@
 package org.educationfree.schoollibweb.model.authentication;
 
-import lombok.*;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
-@Data
 @Table(name = "roles")
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
 public class Role {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -19,6 +20,9 @@ public class Role {
 
     @Column(name = "name")
     private String name;
+
+    @ManyToMany(mappedBy = "roles")
+    private Set<User> users;
 
     @Override
     public String toString() {
