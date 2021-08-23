@@ -28,10 +28,13 @@ public class SecurityConfiguration {
         protected void configure(HttpSecurity http) throws Exception {
             http
                     .authorizeRequests()
+                    .antMatchers("/login*").permitAll()
+                    .antMatchers("/static/**").permitAll()
                     .anyRequest().authenticated()
                     .and()
                     .formLogin()
-//                    .defaultSuccessUrl("/course")
+                    .loginPage("/login")
+                    .loginProcessingUrl("/login")
                     .and()
                     .logout()
                     .logoutSuccessUrl("/login")

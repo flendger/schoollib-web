@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html lang="ru">
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
@@ -20,8 +19,8 @@
 <div class="wrapper pa-0">
     <header class="sp-header">
         <div class="sp-logo-wrap pull-left">
-            <a href="/schoollib/">
-                <img class="brand-img" th:src="@{/static/dist/img/logo.png}" alt="brand"/>
+            <a th:href="@{/}">
+                <img class="brand-img" src="" th:src="@{/static/dist/img/logo.png}" alt="brand"/>
                 <span class="brand-text">Библиотека</span>
             </a>
         </div>
@@ -47,16 +46,16 @@
                                     </div>
                                 </div>
                                 <div class="form-wrap">
-                                    <form th:action="@{/authenticateTheUser}" method="POST">
+                                    <form th:action="@{/login}" method="POST">
                                         <div class="form-group">
-                                            <label class="control-label mb-10">Логин</label>
-                                            <input type="text" class="form-control" required=""
+                                            <label class="control-label mb-10" for="username">Логин</label>
+                                            <input id="username" type="text" class="form-control" required=""
                                                    name="username" placeholder="Введите логин">
                                         </div>
                                         <div class="form-group">
-                                            <label class="pull-left control-label mb-10">Пароль</label>
+                                            <label class="pull-left control-label mb-10" for="password">Пароль</label>
                                             <div class="clearfix"></div>
-                                            <input type="password" class="form-control" required=""
+                                            <input id="password" type="password" class="form-control" required=""
                                                    name="password" placeholder="Введите пароль">
                                         </div>
 

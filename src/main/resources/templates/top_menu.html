@@ -1,5 +1,4 @@
 <html lang="ru" xmlns:th="http://www.thymeleaf.org">
-<html xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
 <nav class="navbar navbar-inverse navbar-fixed-top" th:fragment="top_menu(activeTab)">
     <div class="mobile-only-brand pull-left">
@@ -16,14 +15,37 @@
         <a id="toggle_mobile_search" data-toggle="collapse" data-target="#search_form" class="mobile-only-view"
            href="javascript:void(0);"><i class="zmdi zmdi-search"></i></a>
         <a id="toggle_mobile_nav" class="mobile-only-view" href="javascript:void(0);"><i class="zmdi zmdi-more"></i></a>
+        <!--
+        <form id="search_form" role="search" class="top-nav-search collapse pull-left">
+            <div class="input-group">
+                <input type="text" name="example-input1-group2" class="form-control" placeholder="Search">
+                <span class="input-group-btn">
+						<button type="button" class="btn  btn-default" data-target="#search_form" data-toggle="collapse"
+                                aria-label="Close" aria-expanded="true"><i class="zmdi zmdi-search"></i></button>
+						</span>
+            </div>
+        </form> -->
     </div>
     <div id="mobile_only_nav" class="mobile-only-nav pull-right">
         <ul class="nav navbar-right top-nav pull-right">
-            <li sec:authorize="isAnonymous()">
-                <a th:href="@{/login}"><span>Войти</span></a>
-            </li>
-            <li sec:authorize="isAuthenticated()">
-                <a th:href="@{/logout}"><span>Выйти</span></a>
+            <li class="dropdown auth-drp">
+                <a th:href="@{#}" class="dropdown-toggle pr-0" data-toggle="dropdown"><img
+                        th:src="@{/static/dist/img/user1.png}" alt="user_auth"
+                        class="user-auth-img img-circle" width="80" height="80"/><span
+                        class="user-online-status"></span></a>
+                <ul class="dropdown-menu user-auth-dropdown" data-dropdown-in="flipInX" data-dropdown-out="flipOutX">
+                    <li>
+                        <a th:href="@{/profile}"><i class="zmdi zmdi-account"></i><span>Профиль</span></a>
+                    </li>
+                    <li>
+                        <form th:action="@{/logout}" method="POST">
+                            <button class="btn btn-link" type="submit">
+                                <i class="zmdi zmdi-power"></i><span>Выход</span>
+                            </button>
+                        </form>
+                        <!--                        <a th:href="@{#}"><i class="zmdi zmdi-power"></i><span>Выход</span></a>-->
+                    </li>
+                </ul>
             </li>
         </ul>
     </div>
