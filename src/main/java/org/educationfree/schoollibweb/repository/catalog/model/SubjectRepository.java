@@ -19,9 +19,9 @@ public interface SubjectRepository extends CatalogRepository<Subject> {
             "where s.name like :subject%")
     List<Subject> findSubjectByName(@Param("subject") String subject);
 
-@Override
-@Query("  SELECT s FROM Subject as s " +
-        "where s.name like :subject%")
-List<Subject> findByName(@Param("subject") String subject);
+//@Override
+//@Query("  SELECT s FROM Subject as s " +
+//        "where s.name like :subject%")
+//List<Subject> findByName(@Param("subject") String subject);
 
 }

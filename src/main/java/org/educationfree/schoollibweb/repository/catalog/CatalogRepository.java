@@ -13,5 +13,5 @@ public interface CatalogRepository<T extends AbstractCatalog> extends EntityRepo
     Optional<T> findTopByOrderByCodeDesc();
 
     List<T> findByName(@Param("t") String t);
-    List<T> findByTName(@Param("t") String t);
+
 }
