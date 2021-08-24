@@ -4,7 +4,9 @@ package org.educationfree.schoollibweb.controller;
 import lombok.RequiredArgsConstructor;
 import org.educationfree.schoollibweb.dto.SubjectDto;
 import org.educationfree.schoollibweb.model.catalog.Subject;
+import org.educationfree.schoollibweb.repository.catalog.model.SubjectRepository;
 import org.educationfree.schoollibweb.service.catalog.CatalogService;
+import org.educationfree.schoollibweb.service.catalog.SubjectServiceImpl;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -14,7 +16,8 @@ import org.springframework.web.bind.annotation.*;
 @RequiredArgsConstructor
 public class SubjectController {
     private final CatalogService<Subject, SubjectDto> subjectService;
-
+    private final SubjectRepository subjectRepository;
+    private final SubjectServiceImpl subjectServiceImpl;
     @GetMapping
     public String showSubjectList(Model model) {
         model.addAttribute("subjects", subjectService.findAll());
@@ -22,7 +25,10 @@ public class SubjectController {
     }
     @GetMapping("/filter")
     public String showSubjectList(Model model, @RequestParam(value = "name", required = false) String name) {
-        model.addAttribute("subjects", subjectService.findByName(name));
+//        model.addAttribute("subjects", subjectServiceImpl.findSubjectByName(name));
+
+        model.addAttribute("subjects", subjectServiceImpl.findSubjectByName(name));
+
         return "subject";
     }
     @GetMapping(value = "/{id}")
