@@ -1,6 +1,7 @@
 package org.educationfree.schoollibweb.service.operation;
 
 import org.educationfree.schoollibweb.model.operation.AbstractOperation;
+import org.educationfree.schoollibweb.model.operation.item.BaseItemEntity;
 import org.educationfree.schoollibweb.repository.operation.OperationRepository;
 import org.hibernate.Hibernate;
 import org.springframework.transaction.annotation.Isolation;
@@ -8,8 +9,11 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityNotFoundException;
 import java.time.LocalDateTime;
+import java.util.Comparator;
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public abstract class AbstractOperationService<T extends AbstractOperation<?>> implements OperationService<T> {
 
@@ -49,18 +53,7 @@ public abstract class AbstractOperationService<T extends AbstractOperation<?>> i
     @Override
     @Transactional(isolation = Isolation.SERIALIZABLE)
     public T save(T entity) {
-        if (entity.getId() == null && entity.getDocNumber() == null) {
-            T last = findLast().orElse(null);
-            if (last == null) {
-                //first element in operation
-                entity.setDocNumber(1);
-            } else {
-                entity.setDocNumber(last.getDocNumber() + 1);
-            }
-        }
-        if (entity.getDocDate() == null) {
-            entity.setDocDate(LocalDateTime.now());
-        }
+        fillHeader(entity);
         return getEntityRepository().save(entity);
     }
 
@@ -86,5 +79,33 @@ public abstract class AbstractOperationService<T extends AbstractOperation<?>> i
         T entity = repository.getById(id);
         entity.setDeleted(isDeleted);
         repository.save(entity);
+    }
+
+    protected void fillHeader(T entity) {
+        if (entity.getId() == null && entity.getDocNumber() == null) {
+            T last = findLast().orElse(null);
+            if (last == null) {
+                //first element in operation
+                entity.setDocNumber(1);
+            } else {
+                entity.setDocNumber(last.getDocNumber() + 1);
+            }
+        }
+        if (entity.getDocDate() == null) {
+            entity.setDocDate(LocalDateTime.now());
+        }
+    }
+
+    protected void renumberRows(List<? extends BaseItemEntity<T>> items) {
+        if (items == null) {
+            return;
+        }
+
+        AtomicInteger rowCounter = new AtomicInteger();
+        items
+                .stream()
+                .filter(Objects::nonNull)
+                .sorted(Comparator.comparing(item -> item.getRow() == null ? Integer.MAX_VALUE : item.getRow()))
+                .forEach(item -> item.setRow(rowCounter.incrementAndGet()));
     }
 }

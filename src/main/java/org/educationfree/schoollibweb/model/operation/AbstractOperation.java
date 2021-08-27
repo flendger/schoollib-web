@@ -24,6 +24,6 @@ public abstract class AbstractOperation<I extends BaseItemEntity<?>> extends Bas
     @Column(name = "doc_date")
     protected LocalDateTime docDate;
 
-    @OneToMany(mappedBy = "document")
+    @OneToMany(mappedBy = "document", cascade = CascadeType.ALL, orphanRemoval = true)
     protected List<I> items;
 }
