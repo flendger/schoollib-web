@@ -52,9 +52,21 @@ public abstract class AbstractOperationService<T extends AbstractOperation<?>> i
 
     @Override
     @Transactional(isolation = Isolation.SERIALIZABLE)
-    public T save(T entity) {
-        fillHeader(entity);
-        return getEntityRepository().save(entity);
+    public T save(T entity) { //TODO: Update document when items changed and saved
+        OperationRepository<T> repository = getEntityRepository();
+        T entityToSave = entity;
+        if (entity.getId() != null) {
+            T existEntity = repository.findById(entity.getId())
+                    .orElseThrow(() -> new EntityNotFoundException(
+                            String.format("Entity %s with id %d not found", entity.getClass().getSimpleName(), entity.getId())));
+            entityToSave = mergeEntity(existEntity, entity);
+        }
+
+        fillHeader(entityToSave);
+        renumberRows(entityToSave.getItems());
+        makeEntries(entityToSave);
+
+        return repository.save(entityToSave);
     }
 
     @Override
@@ -96,7 +108,7 @@ public abstract class AbstractOperationService<T extends AbstractOperation<?>> i
         }
     }
 
-    protected void renumberRows(List<? extends BaseItemEntity<T>> items) {
+    protected void renumberRows(List<? extends BaseItemEntity<?>> items) {
         if (items == null) {
             return;
         }
@@ -107,5 +119,15 @@ public abstract class AbstractOperationService<T extends AbstractOperation<?>> i
                 .filter(Objects::nonNull)
                 .sorted(Comparator.comparing(item -> item.getRow() == null ? Integer.MAX_VALUE : item.getRow()))
                 .forEach(item -> item.setRow(rowCounter.incrementAndGet()));
+    }
+
+    protected T mergeEntity(T existEntity, T entity) {
+        existEntity.setDocDate(entity.getDocDate());
+        existEntity.setDocNumber(entity.getDocNumber());
+        existEntity.setDeleted(entity.isDeleted());
+        return existEntity;
+    }
+
+    protected void makeEntries(T entity) {
     }
 }

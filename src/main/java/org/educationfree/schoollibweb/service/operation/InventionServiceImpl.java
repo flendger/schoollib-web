@@ -7,11 +7,9 @@ import org.educationfree.schoollibweb.model.operation.item.InventionItem;
 import org.educationfree.schoollibweb.repository.operation.OperationRepository;
 import org.educationfree.schoollibweb.repository.operation.model.InventionRepository;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
-import java.util.Collections;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -24,35 +22,45 @@ public class InventionServiceImpl extends AbstractOperationService<Invention> {
     }
 
     @Override
-    @Transactional
-    public Invention save(Invention entity) {
-        fillHeader(entity);
+    protected Invention mergeEntity(Invention existEntity, Invention entity) {
+        existEntity = super.mergeEntity(existEntity, entity);
 
-        List<InventionItem> items = entity.getItems();
-        renumberRows(items);
+        existEntity.setLocation(entity.getLocation());
+        existEntity.setComment(entity.getComment());
+        return existEntity;
+    }
 
+    @Override
+    protected void makeEntries(Invention entity) {
+        super.makeEntries(entity);
         entity.setLocationStockEntries(makeLocationStockEntries(entity));
-
-        return getEntityRepository().save(entity);
     }
 
     private List<LocationStockEntry> makeLocationStockEntries(Invention entity) {
-        List<InventionItem> items = entity.getItems();
-        if (items == null) {
-            return Collections.emptyList();
+        final List<LocationStockEntry> locationStockEntries;
+        if (entity.getLocationStockEntries() == null) {
+            locationStockEntries = new ArrayList<>();
+        } else {
+            locationStockEntries = entity.getLocationStockEntries();
+            locationStockEntries.clear();
         }
 
-        return items
+        List<InventionItem> items = entity.getItems();
+        if (items == null) {
+            return locationStockEntries;
+        }
+
+        items
                 .stream()
                 .filter(item -> item.getBook() != null)
-                .map(item -> {
+                .forEach(item -> {
                     LocationStockEntry locationStockEntry = new LocationStockEntry();
                     locationStockEntry.setEntryDate(entity.getDocDate());
                     locationStockEntry.setLocation(entity.getLocation());
                     locationStockEntry.setBook(item.getBook());
                     locationStockEntry.setQuantity(item.getQuantity());
-                    return locationStockEntry;
-                })
-                .collect(Collectors.toList());
+                    locationStockEntries.add(locationStockEntry);
+                });
+        return locationStockEntries;
     }
 }
