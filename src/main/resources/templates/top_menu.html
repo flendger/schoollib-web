@@ -29,15 +29,21 @@
     <div id="mobile_only_nav" class="mobile-only-nav pull-right">
         <ul class="nav navbar-right top-nav pull-right">
             <li class="dropdown auth-drp">
-                <a th:href="@{#}" class="dropdown-toggle pr-0" data-toggle="dropdown"><img th:src="@{/static/dist/img/user1.png}" alt="user_auth"
-                                                                                     class="user-auth-img img-circle" width="80" height="80"/><span
+                <a th:href="@{#}" class="dropdown-toggle pr-0" data-toggle="dropdown"><img
+                        th:src="@{/static/dist/img/user1.png}" alt="user_auth"
+                        class="user-auth-img img-circle" width="80" height="80"/><span
                         class="user-online-status"></span></a>
                 <ul class="dropdown-menu user-auth-dropdown" data-dropdown-in="flipInX" data-dropdown-out="flipOutX">
                     <li>
                         <a th:href="@{/profile}"><i class="zmdi zmdi-account"></i><span>Профиль</span></a>
                     </li>
                     <li>
-                        <a th:href="@{#}"><i class="zmdi zmdi-power"></i><span>Выход</span></a>
+                        <form th:action="@{/logout}" method="POST">
+                            <button class="btn btn-link" type="submit">
+                                <i class="zmdi zmdi-power"></i><span class="ml-15">Выход</span>
+                            </button>
+                        </form>
+                        <!--                        <a th:href="@{#}"><i class="zmdi zmdi-power"></i><span>Выход</span></a>-->
                     </li>
                 </ul>
             </li>
