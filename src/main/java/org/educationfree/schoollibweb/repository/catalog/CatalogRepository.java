@@ -14,4 +14,7 @@ public interface CatalogRepository<T extends AbstractCatalog> extends EntityRepo
 
     List<T> findByName(@Param("t") String t);
 
+    List<T>  findByNameStartingWith(@Param("t") String t);
+
+    List<T>  findByNameContaining(@Param("t") String t);
 }

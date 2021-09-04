@@ -16,5 +16,8 @@ public interface CatalogService<T,D> {
     Optional<D> findLast();
 
     List<D> findByName(@Param("t") String t);
+    List<D> findByNameStartingWith(@Param("t") String t);
+    List<D> findByNameContaining(@Param("t") String t);
+
 
 }

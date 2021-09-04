@@ -49,6 +49,14 @@
             <div class="pb-5">
                 <a class="btn btn-success" th:href="@{/owner/new}">Добавить</a>
             </div>
+            <div class="col-12 mt-3">
+                <form method="get" th:action="@{/owner/filter}">
+                    <!--                    <label>Предмет</label>-->
+                    <input type="text" name="name" id="title" th:value="${param.name}"/>
+                    <button class=" btn-small" type="submit">Искать</button>
+                </form>
+
+            </div>
             <!-- Table -->
             <div class="row">
                 <div class="col-sm-12">

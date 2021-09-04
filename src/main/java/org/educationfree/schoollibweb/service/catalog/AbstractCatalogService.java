@@ -34,8 +34,14 @@ public abstract class AbstractCatalogService<T extends AbstractCatalog, D extend
     public List<D> findByName(@Param("s") String s){
         return getEntityRepository().findByName(s).stream().map(t -> getMapper().entityToDto(t)).collect(Collectors.toList());
     }
-
-
+    @Override
+    public List<D> findByNameStartingWith(@Param("s") String s){
+        return getEntityRepository().findByNameStartingWith(s).stream().map(t -> getMapper().entityToDto(t)).collect(Collectors.toList());
+    }
+    @Override
+    public List<D> findByNameContaining(@Param("s") String s){
+        return getEntityRepository().findByNameContaining(s).stream().map(t -> getMapper().entityToDto(t)).collect(Collectors.toList());
+    }
     @Override
     public Optional<D> findById(Long id) {
         Optional<T> entity = getEntityRepository().findById(id);

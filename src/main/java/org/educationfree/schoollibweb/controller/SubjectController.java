@@ -27,8 +27,9 @@ public class SubjectController {
     public String showSubjectList(Model model, @RequestParam(value = "name", required = false) String name) {
 //        model.addAttribute("subjects", subjectServiceImpl.findSubjectByName(name));
 
-        model.addAttribute("subjects", subjectServiceImpl.findSubjectByName(name));
-
+//        model.addAttribute("subjects", subjectServiceImpl.findSubjectByName(name));
+//
+        model.addAttribute("subjects", subjectServiceImpl.findByNameStartingWith(name));
         return "subject";
     }
     @GetMapping(value = "/{id}")
