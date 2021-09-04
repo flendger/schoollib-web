@@ -16,22 +16,21 @@ import org.springframework.web.bind.annotation.*;
 @RequiredArgsConstructor
 public class SubjectController {
     private final CatalogService<Subject, SubjectDto> subjectService;
-    private final SubjectRepository subjectRepository;
     private final SubjectServiceImpl subjectServiceImpl;
+
     @GetMapping
     public String showSubjectList(Model model) {
         model.addAttribute("subjects", subjectService.findAll());
         return "subject";
     }
+
     @GetMapping("/filter")
     public String showSubjectList(Model model, @RequestParam(value = "name", required = false) String name) {
-//        model.addAttribute("subjects", subjectServiceImpl.findSubjectByName(name));
 
-//        model.addAttribute("subjects", subjectServiceImpl.findSubjectByName(name));
-//
-        model.addAttribute("subjects", subjectServiceImpl.findByNameStartingWith(name));
+        model.addAttribute("subjects", subjectServiceImpl.findByNameContaining(name));
         return "subject";
     }
+
     @GetMapping(value = "/{id}")
     public String showSubjectForm(Model model, @PathVariable Long id) {
         model.addAttribute("subject", subjectService.findById(id).orElseThrow());
